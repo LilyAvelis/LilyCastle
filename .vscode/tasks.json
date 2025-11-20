@@ -22,6 +22,23 @@
                 "panel": "shared"
             },
             "problemMatcher": []
+        },
+        {
+            "label": "Open HTML in Browser",
+            "type": "shell",
+            "command": "cmd",
+            "args": [
+                "/c",
+                "start",
+                "${file}"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "never",
+                "focus": false,
+                "panel": "shared"
+            }
         }
     ]
 }

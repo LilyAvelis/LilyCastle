@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EUPHORIA Systems | Happiness as a Service</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #feca57 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .glow-text {
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5), 0 0 40px rgba(255, 255, 255, 0.3);
+        }
+
+        .rainbow-border {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff6b6b);
+            background-size: 300% 300%;
+            animation: rainbowShift 3s ease infinite;
+            padding: 2px;
+            border-radius: 20px;
+        }
+
+        .rainbow-border > div {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 18px;
+            color: #1f2937;
+        }
+
+        @keyframes rainbowShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-30px) rotate(2deg); }
+            66% { transform: translateY(-15px) rotate(-2deg); }
+        }
+
+        .floating-delay-1 { animation-delay: 1s; }
+        .floating-delay-2 { animation-delay: 2s; }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            animation: particleFloat 10s linear infinite;
+        }
+
+        @keyframes particleFloat {
+            0% { transform: translateY(100vh) translateX(0px); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) translateX(100px); opacity: 0; }
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .pulse-glow {
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(255, 255, 255, 0.6); }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px) scale(0.9);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(45deg, #ff5252, #26a69a);
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- Частицы фона -->
+    <div id="particles"></div>
+
+    <!-- Навигация -->
+    <nav class="fixed w-full z-50 glass-card transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="text-3xl font-black tracking-tighter glow-text flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-pink-400 via-purple-400 to-blue-400 pulse-glow"></div>
+                EUPHORIA
+            </div>
+            <div class="hidden md:flex space-x-8 font-semibold text-sm">
+                <a href="#solutions" class="hover:text-yellow-300 transition-all hover:scale-110 inline-block">Решения</a>
+                <a href="#team" class="hover:text-yellow-300 transition-all hover:scale-110 inline-block">Команда</a>
+                <a href="#values" class="hover:text-yellow-300 transition-all hover:scale-110 inline-block">Ценности</a>
+                <a href="#contact" class="hover:text-yellow-300 transition-all hover:scale-110 inline-block">Контакт</a>
+            </div>
+            <button class="bg-gradient-to-r from-pink-500 to-yellow-500 text-white px-8 py-3 rounded-full font-bold hover:from-pink-600 hover:to-yellow-600 transition-all transform hover:scale-105 hover:rotate-1 shadow-lg">
+                Начать Счастье
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        <div class="container mx-auto px-6 relative z-10 text-center max-w-5xl">
+            <div class="floating">
+                <h1 class="text-6xl md:text-8xl font-black mb-6 glow-text leading-tight">
+                    СЧАСТЬЕ — ЭТО
+                    <br>
+                    <span class="text-yellow-300" style="text-shadow: 0 0 30px rgba(254, 202, 87, 0.8);">НАША ПРОДУКЦИЯ</span>
+                </h1>
+            </div>
+            
+            <div class="floating floating-delay-1">
+                <p class="text-xl md:text-2xl mb-12 max-w-3xl mx-auto leading-relaxed font-light">
+                    В мире EUPHORIA депрессия — это архаизм, а радость — стандарт. Мы производим счастье в промышленных масштабах с 2025 года.
+                </p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row justify-center gap-6 floating floating-delay-2">
+                <button class="px-12 py-5 rounded-3xl bg-gradient-to-r from-green-400 to-blue-500 text-white font-bold text-lg hover:from-green-500 hover:to-blue-600 transition-all transform hover:scale-110 hover:rotate-1 shadow-2xl">
+                    🚀 Запустить Радость
+                </button>
+                <button class="px-12 py-5 rounded-3xl bg-white text-purple-700 font-bold text-lg hover:bg-yellow-300 transition-all transform hover:scale-110 hover:-rotate-1 shadow-2xl">
+                    ✨ Демо Счастья
+                </button>
+            </div>
+
+            <div class="mt-20 grid grid-cols-3 gap-8 max-w-2xl mx-auto">
+                <div class="text-center">
+                    <div class="text-4xl font-black text-yellow-300 glow-text">100%</div>
+                    <div class="text-sm font-semibold mt-2">Счастливых Клиентов</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-black text-green-300 glow-text">0</div>
+                    <div class="text-sm font-semibold mt-2">Случаев Грусти</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-black text-pink-300 glow-text">∞</div>
+                    <div class="text-sm font-semibold mt-2">Доз Радости</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Декоративные элементы -->
+        <div class="absolute top-32 left-10 w-72 h-72 bg-yellow-300 rounded-full blur-3xl opacity-30 floating"></div>
+        <div class="absolute bottom-32 right-10 w-96 h-96 bg-pink-400 rounded-full blur-3xl opacity-30 floating floating-delay-1"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-400 rounded-full blur-3xl opacity-20 floating floating-delay-2"></div>
+    </header>
+
+    <!-- Ценности -->
+    <section id="values" class="py-32 relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20 reveal">
+                <h2 class="text-5xl font-black mb-6 glow-text">НАШИ ЦЕННОСТИ</h2>
+                <p class="text-xl max-w-2xl mx-auto font-light">Мы не просто убираем грусть — мы заполняем мир светом.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                <div class="rainbow-border hover-lift reveal">
+                    <div class="p-8 h-full">
+                        <div class="text-6xl mb-6">🌟</div>
+                        <h3 class="text-2xl font-black mb-4 text-purple-700">Световая Энергия</h3>
+                        <p class="text-gray-600 leading-relaxed">Каждый пиксель нашего интерфейса излучает позитив. Мы используем квантовую теорию радости для максимальной эмиссии счастья.</p>
+                    </div>
+                </div>
+
+                <div class="rainbow-border hover-lift reveal" style="transition-delay: 100ms;">
+                    <div class="p-8 h-full">
+                        <div class="text-6xl mb-6">🌈</div>
+                        <h3 class="text-2xl font-black mb-4 text-purple-700">Радужная Логика</h3>
+                        <p class="text-gray-600 leading-relaxed">Наши алгоритмы построены на спектральном анализе эмоций. Мы преобразуем любую негативную вибрацию в чистую радость.</p>
+                    </div>
+                </div>
+
+                <div class="rainbow-border hover-lift reveal" style="transition-delay: 200ms;">
+                    <div class="p-8 h-full">
+                        <div class="text-6xl mb-6">⚡</div>
+                        <h3 class="text-2xl font-black mb-4 text-purple-700">Молниеносная Радость</h3>
+                        <p class="text-gray-600 leading-relaxed">Скорость доставки счастья — менее 0.3 секунд. Мы оптимизировали радость до квантового предела.</p>
+                    </div>
+                </div>
+
+                <div class="rainbow-border hover-lift reveal" style="transition-delay: 300ms;">
+                    <div class="p-8 h-full">
+                        <div class="text-6xl mb-6">🦄</div>
+                        <h3 class="text-2xl font-black mb-4 text-purple-700">Единорог Мышления</h3>
+                        <p class="text-gray-600 leading-relaxed">Мы верим в невозможное. В нашем мире каждая мечта становится KPI, а каждая цель — достижима.</p>
+                    </div>
+                </div>
+
+                <div class="rainbow-border hover-lift reveal" style="transition-delay: 400ms;">
+                    <div class="p-8 h-full">
+                        <div class="text-6xl mb-6">💎</div>
+                        <h3 class="text-2xl font-black mb-4 text-purple-700">Кристальная Ясность</h3>
+                        <p class="text-gray-600 leading-relaxed">Наша визия настолько чиста, что видит сквозь тьму. Мы преобразуем хаос в гармонию за один цикл.</p>
+                    </div>
+                </div>
+
+                <div class="rainbow-border hover-lift reveal" style="transition-delay: 500ms;">
+                    <div class="p-8 h-full">
+                        <div class="text-6xl mb-6">🚀</div>
+                        <h3 class="text-2xl font-black mb-4 text-purple-700">Гиперпрыжок Счастья</h3>
+                        <p class="text-gray-600 leading-relaxed">Мы преодолели гравитацию негатива. Наша технология позволяет достичь орбиты радости за считанные секунды.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Команда -->
+    <section id="team" class="py-32 bg-white bg-opacity-10">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20 reveal">
+                <h2 class="text-5xl font-black mb-6 glow-text">КОМАНДА СЧАСТЬЯ</h2>
+                <p class="text-xl max-w-2xl mx-auto font-light">Люди, которые делают мир ярче каждый день.</p>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-12 max-w-6xl mx-auto">
+                <div class="text-center group hover-lift reveal">
+                    <div class="w-40 h-40 mx-auto rounded-full overflow-hidden border-4 border-white shadow-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Joy&backgroundColor=ffdfbf" alt="Avatar" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-2xl font-black text-yellow-300 glow-text mb-2">Александр Светлый</h3>
+                    <p class="text-lg font-semibold text-white mb-2">Chief Joy Officer</p>
+                    <p class="text-sm text-gray-300 max-w-xs mx-auto">"Радость — это не эмоция, это протокол."</p>
+                </div>
+
+                <div class="text-center group hover-lift reveal" style="transition-delay: 100ms;">
+                    <div class="w-40 h-40 mx-auto rounded-full overflow-hidden border-4 border-white shadow-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Happy&backgroundColor=b6e3f4" alt="Avatar" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-2xl font-black text-pink-300 glow-text mb-2">Мария Лучик</h3>
+                    <p class="text-lg font-semibold text-white mb-2">VP of Sparkles</p>
+                    <p class="text-sm text-gray-300 max-w-xs mx-auto">"Я добавляю блеск в каждый пиксель."</p>
+                </div>
+
+                <div class="text-center group hover-lift reveal" style="transition-delay: 200ms;">
+                    <div class="w-40 h-40 mx-auto rounded-full overflow-hidden border-4 border-white shadow-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Rainbow&backgroundColor=c0aede" alt="Avatar" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-2xl font-black text-green-300 glow-text mb-2">Дмитрий Радужный</h3>
+                    <p class="text-lg font-semibold text-white mb-2">Happiness Engineer</p>
+                    <p class="text-sm text-gray-300 max-w-xs mx-auto">"Код — это поэзия, которая сияет."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Продукты -->
+    <section id="solutions" class="py-32">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20 reveal">
+                <h2 class="text-5xl font-black mb-6 glow-text">ПРОДУКТЫ РАДОСТИ</h2>
+                <p class="text-xl max-w-2xl mx-auto font-light">Выберите свой уровень счастья.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                <div class="glass-card rounded-3xl p-8 hover-lift reveal">
+                    <div class="text-center">
+                        <div class="text-5xl mb-6">✨</div>
+                        <h3 class="text-2xl font-black mb-4">Базовая Радость</h3>
+                        <p class="text-gray-300 mb-8">Ежедневная доза позитива, автоматические улыбки и базовый уровень энергии.</p>
+                        <div class="text-4xl font-black text-yellow-300 mb-6">0₽</div>
+                        <button class="w-full py-4 bg-gradient-to-r from-green-400 to-blue-500 rounded-2xl font-bold hover:from-green-500 hover:to-blue-600 transition-all">
+                            Начать Бесплатно
+                        </button>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-3xl p-8 hover-lift reveal" style="transition-delay: 100ms;">
+                    <div class="text-center">
+                        <div class="text-5xl mb-6">🌟</div>
+                        <h3 class="text-2xl font-black mb-4">Премиум Счастье</h3>
+                        <p class="text-gray-300 mb-8">Неограниченный доступ к радости, персональный коуч счастья и приоритетная поддержка.</p>
+                        <div class="text-4xl font-black text-pink-300 mb-6">999₽</div>
+                        <button class="w-full py-4 bg-gradient-to-r from-pink-400 to-purple-500 rounded-2xl font-bold hover:from-pink-500 hover:to-purple-600 transition-all">
+                            Выбрать Счастье
+                        </button>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-3xl p-8 hover-lift reveal" style="transition-delay: 200ms;">
+                    <div class="text-center">
+                        <div class="text-5xl mb-6">💎</div>
+                        <h3 class="text-2xl font-black mb-4">Алмазная Эйфория</h3>
+                        <p class="text-gray-300 mb-8">Максимальный уровень счастья, квантовая обработка радости и вечная улыбка гарантирована.</p>
+                        <div class="text-4xl font-black text-purple-300 mb-6">∞₽</div>
+                        <button class="w-full py-4 bg-gradient-to-r from-purple-400 to-pink-500 rounded-2xl font-bold hover:from-purple-500 hover:to-pink-600 transition-all">
+                            Стать Богом Радости
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="py-16 border-t border-white border-opacity-20">
+        <div class="container mx-auto px-6 text-center">
+            <div class="text-4xl font-black glow-text mb-6">EUPHORIA SYSTEMS</div>
+            <p class="text-lg mb-8 max-w-2xl mx-auto font-light">
+                "Мы сделали мир лучше, удалив негатив и заменив его на бесконечную радость. Присоединяйтесь к революции счастья."
+            </p>
+            <div class="flex justify-center gap-6 mb-8">
+                <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition-all hover:scale-110 cursor-pointer">📧</div>
+                <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition-all hover:scale-110 cursor-pointer">💬</div>
+                <div class="w-12 h-12 bg-white bg-opacity-20 rounded-full flex items-center justify-center hover:bg-opacity-30 transition-all hover:scale-110 cursor-pointer">🌐</div>
+            </div>
+            <div class="text-sm text-gray-300">
+                © 2025 EUPHORIA Systems. Все права на счастье защищены. Грусть запрещена законодательно.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Частицы
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 10 + 's';
+                particle.style.animationDuration = (10 + Math.random() * 10) + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        // Reveal on scroll
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.reveal');
+            const windowHeight = window.innerHeight;
+            
+            reveals.forEach(reveal => {
+                const elementTop = reveal.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) {
+                    reveal.classList.add('active');
+                }
+            });
+        }
+
+        // Navbar effect
+        function navbarEffect() {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(255, 255, 255, 0.15)';
+                nav.style.backdropFilter = 'blur(30px)';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.1)';
+                nav.style.backdropFilter = 'blur(20px)';
+            }
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            revealOnScroll();
+            navbarEffect();
+        });
+
+        window.addEventListener('scroll', () => {
+            revealOnScroll();
+            navbarEffect();
+        });
+
+        // Add click effects
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>

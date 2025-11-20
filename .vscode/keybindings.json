@@ -1,0 +1,23 @@
+[
+    {
+        "key": "ctrl+f5",
+        "command": "-workbench.action.debug.run",
+        "when": "editorLangId == html && editorTextFocus"
+    },
+    {
+        "key": "ctrl+f5",
+        "command": "workbench.action.tasks.runTask",
+        "args": "Open HTML in Browser",
+        "when": "editorLangId == html && editorTextFocus"
+    },
+    {
+        "key": "ctrl+up",
+        "command": "cursorTop",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+down",
+        "command": "cursorBottom",
+        "when": "editorTextFocus"
+    }
+]

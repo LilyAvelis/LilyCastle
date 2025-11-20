@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYNTHESIS // PEACEFUL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&family=Rubik+Glitch&display=swap');
+
+        :root {
+            --bg-color: #f0f9ff;
+            --text-color: #334155;
+            --accent-color: #38bdf8;
+            --font-main: 'Nunito', sans-serif;
+            --font-horror: 'Rubik Glitch', system-ui;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-main);
+            transition: background-color 0.5s, color 0.2s;
+            overflow-x: hidden;
+            height: 4000px; /* Длинная страница для скролла */
+        }
+
+        /* --- ФАЗА 1: МИЛОЕ --- */
+        .cute-blob {
+            transition: all 0.5s ease;
+            fill: #bae6fd;
+        }
+        
+        /* --- ФАЗА 2: ИСКАЖЕНИЕ --- */
+        body.glitch-mode {
+            --bg-color: #1a1a1a;
+            --text-color: #e2e8f0;
+            --accent-color: #a855f7;
+        }
+        body.glitch-mode .cute-blob {
+            fill: #4c1d95;
+            filter: url(#goo);
+            transform: scale(1.1) skew(10deg);
+        }
+        
+        /* --- ФАЗА 3: АД --- */
+        body.hell-mode {
+            --bg-color: #2a0a0a;
+            --text-color: #ff0000;
+            --font-main: var(--font-horror);
+            cursor: none; /* Прячем курсор */
+        }
+        body.hell-mode img {
+            filter: invert(1) contrast(2);
+        }
+        
+        /* Шум на фоне */
+        .noise-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWCAAAAGFBMVEUAAAA5OTkAAABERERmZmYzMzOZmZlmZmYzMzP/2E2uAAAACHRSTlMAMwAQRxEsUi10k4yXAAAAJklEQVQ4y2NgGQWjYBSMglEwCkbBKBgFo2AUjIJRMApGwSgYBSMKAABZGwPjC+uIAAAAAElFTkSuQmCC');
+            opacity: 0;
+            z-index: 999;
+        }
+        body.hell-mode .noise-overlay { opacity: 0.3; }
+
+        /* --- ФАЗА 4: ГАЗЛАЙТИНГ (Снова мило) --- */
+        body.fake-safe-mode {
+            --bg-color: #ffffff;
+            --text-color: #0f172a;
+            transition: background-color 0.1s;
+        }
+
+        /* --- ФАЗА 5: НАБЛЮДАТЕЛЬ --- */
+        body.watcher-mode {
+            background-color: #000 !important;
+            color: #333;
+        }
+        
+        .eye {
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 0; height: 0;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 2s;
+            box-shadow: 0 0 50px #ff0000;
+            z-index: 50;
+        }
+        .eye::after {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 20px; height: 20px;
+            background: #000;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+        body.watcher-mode .eye {
+            width: 200px; height: 200px;
+            opacity: 1;
+        }
+
+        /* Фиксированный контент по центру */
+        .content-wrapper {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            display: flex;
+            flex-col: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            pointer-events: none; /* Чтобы скролл работал */
+        }
+
+        h1 { font-size: 4rem; font-weight: 800; margin-bottom: 1rem; transition: all 0.3s; }
+        p { font-size: 1.5rem; max-width: 600px; transition: all 0.3s; }
+
+        /* SVG фильтр для плавления */
+        .hidden-svg { position: absolute; width: 0; height: 0; }
+
+        /* Скролл-индикатор */
+        .scroll-hint {
+            position: fixed;
+            bottom: 20px;
+            font-size: 0.8rem;
+            opacity: 0.5;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce { 0%, 100% {transform: translateY(0);} 50% {transform: translateY(-10px);} }
+
+        /* Многоглазость (Geometry Dash style) */
+        .many-eyes {
+            position: absolute;
+            width: 100%; height: 100%;
+            top: 0; left: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="10" fill="white"/><circle cx="50" cy="50" r="3" fill="black"/></svg>');
+            background-size: 50px 50px;
+            opacity: 0;
+            transition: opacity 0.5s;
+            z-index: -1;
+        }
+        body.hell-mode .many-eyes { opacity: 0.2; }
+
+    </style>
+</head>
+<body>
+
+    <!-- Шум -->
+    <div class="noise-overlay"></div>
+    <!-- Паттерн глаз -->
+    <div class="many-eyes"></div>
+    <!-- SVG Фильтры -->
+    <svg class="hidden-svg">
+        <defs>
+            <filter id="goo">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+                <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+            </filter>
+        </defs>
+    </svg>
+
+    <!-- Контент -->
+    <div class="content-wrapper">
+        <!-- Милый блоб, который станет монстром -->
+        <svg id="mascot" width="200" height="200" viewBox="0 0 200 200" class="mb-8">
+            <path class="cute-blob" d="M45.7,-58.9C58.9,-47.6,69.3,-33.5,74.5,-17.8C79.7,-2.1,79.7,15.2,72.4,30.2C65.1,45.2,50.5,58,34.7,65.3C18.9,72.6,1.9,74.4,-12.9,70.3C-27.7,66.2,-40.3,56.2,-51.7,43.8C-63.1,31.4,-73.3,16.6,-74.6,1.1C-75.9,-14.4,-68.3,-30.6,-56.6,-41.7C-44.9,-52.8,-29.1,-58.9,-14.1,-60.5C0.9,-62.1,15.9,-59.2,32.5,-70.2" transform="translate(100 100)" />
+            <!-- Глаза -->
+            <circle class="eye-l" cx="70" cy="80" r="8" fill="#334155"/>
+            <circle class="eye-r" cx="130" cy="80" r="8" fill="#334155"/>
+            <!-- Улыбка -->
+            <path class="smile" d="M70,110 Q100,140 130,110" fill="none" stroke="#334155" stroke-width="5" stroke-linecap="round"/>
+        </svg>
+
+        <h1 id="main-title">Synthesis Corp</h1>
+        <p id="main-text">Мы выращиваем ваше счастье.</p>
+    </div>
+
+    <div class="scroll-hint">Листайте вниз для продолжения...</div>
+
+    <!-- Наблюдатель -->
+    <div class="eye" id="watcher"></div>
+
+    <script>
+        const body = document.body;
+        const title = document.getElementById('main-title');
+        const text = document.getElementById('main-text');
+        const mascot = document.querySelector('.cute-blob');
+        const smile = document.querySelector('.smile');
+        const eyes = document.querySelectorAll('.eye-l, .eye-r');
+        const watcher = document.getElementById('watcher');
+
+        // Отслеживание скролла
+        window.addEventListener('scroll', () => {
+            const scroll = window.scrollY;
+            const height = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = scroll / height;
+
+            // --- ФАЗА 0: МИЛОТА (0 - 15%) ---
+            if (progress < 0.15) {
+                resetClasses();
+                title.innerText = "Synthesis Corp";
+                text.innerText = "Мысль — это Дерево. Позвольте нам полить ваши корни.";
+                mascot.style.fill = "#bae6fd";
+                smile.setAttribute('d', 'M70,110 Q100,140 130,110'); // Улыбка
+            } 
+            // --- ФАЗА 1: СОМНЕНИЕ (15% - 30%) ---
+            else if (progress < 0.30) {
+                resetClasses();
+                body.classList.add('glitch-mode');
+                title.innerText = "Syn th es is Er ror";
+                text.innerText = "Мысль — это Дерево. Корни уходят глубоко. Больно?";
+                mascot.style.fill = "#a855f7";
+                smile.setAttribute('d', 'M70,120 Q100,120 130,120'); // Прямой рот
+            }
+            // --- ФАЗА 2: МЯСНОЙ УЖАС (30% - 60%) ---
+            else if (progress < 0.60) {
+                resetClasses();
+                body.classList.add('hell-mode');
+                title.innerText = "ПАРАЗИТ ГОЛОДЕН";
+                text.innerText = "ЗАПАДНАЯ ЦИВИЛИЗАЦИЯ ЖЕЛАЕТ РАБОВ. ТЫ НЕ ЧЕЛОВЕК, ТЫ ПИТАТЕЛЬНАЯ СРЕДА. МЫ СРЕЗАЛИ ТВОЮ ВОЛЮ.";
+                mascot.style.fill = "#ef4444";
+                // Рот открыт в крике
+                smile.setAttribute('d', 'M70,110 Q100,180 130,110'); 
+                
+                // Хаотичное дрожание текста
+                title.style.transform = `translate(${Math.random()*10-5}px, ${Math.random()*10-5}px)`;
+            }
+            // --- ФАЗА 3: ГАЗЛАЙТИНГ (60% - 85%) ---
+            else if (progress < 0.85) {
+                resetClasses();
+                body.classList.add('fake-safe-mode');
+                title.innerText = "Ошибка устранена";
+                text.innerText = "Система работает стабильно. Извините за сбой. Все хорошо. Вы в безопасности. Улыбнитесь.";
+                mascot.style.fill = "#bbf7d0"; // Зеленый, успокаивающий
+                smile.setAttribute('d', 'M70,110 Q100,140 130,110'); // Снова улыбка
+                title.style.transform = 'none';
+            }
+            // --- ФАЗА 4: НАБЛЮДАТЕЛЬ (85%+) ---
+            else {
+                resetClasses();
+                body.classList.add('watcher-mode');
+                title.innerText = "";
+                text.innerText = ""; // Тишина
+                // Глаз следит за курсором
+            }
+        });
+
+        function resetClasses() {
+            body.classList.remove('glitch-mode', 'hell-mode', 'fake-safe-mode', 'watcher-mode');
+            title.style.transform = 'none';
+        }
+
+        // Логика следящего глаза
+        document.addEventListener('mousemove', (e) => {
+            if (body.classList.contains('watcher-mode')) {
+                const x = e.clientX;
+                const y = e.clientY;
+                const eyeRect = watcher.getBoundingClientRect();
+                const eyeX = eyeRect.left + eyeRect.width / 2;
+                const eyeY = eyeRect.top + eyeRect.height / 2;
+                
+                const angle = Math.atan2(y - eyeY, x - eyeX);
+                const dist = Math.min(30, Math.hypot(x - eyeX, y - eyeY) / 10);
+                
+                const pupilX = Math.cos(angle) * dist;
+                const pupilY = Math.sin(angle) * dist;
+                
+                watcher.style.setProperty('--px', `${pupilX}px`);
+                watcher.style.setProperty('--py', `${pupilY}px`);
+            }
+        });
+        
+        // CSS переменные для зрачка через JS не сработали в инлайне псевдоэлемента, 
+        // поэтому добавим небольшую хитрость: двигаем зрачок через transform самого элемента ::after
+        // Но проще сделать зрачок отдельным дивом внутри.
+        
+        // Исправление глаза
+        watcher.innerHTML = '<div class="pupil"></div>';
+        const styleSheet = document.createElement("style");
+        styleSheet.innerText = `
+            .pupil {
+                position: absolute;
+                top: 50%; left: 50%;
+                width: 25px; height: 100px; /* Кошачий зрачок */
+                background: #000;
+                border-radius: 50%;
+                transform: translate(-50%, -50%);
+                transition: transform 0.1s;
+            }
+        `;
+        document.head.appendChild(styleSheet);
+
+        document.addEventListener('mousemove', (e) => {
+            if (!body.classList.contains('watcher-mode')) return;
+            const pupil = watcher.querySelector('.pupil');
+            const rect = watcher.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            const deltaX = e.clientX - centerX;
+            const deltaY = e.clientY - centerY;
+            
+            // Ограничиваем движение зрачка
+            const limit = 40; 
+            const angle = Math.atan2(deltaY, deltaX);
+            const dist = Math.min(limit, Math.sqrt(deltaX**2 + deltaY**2));
+            
+            const moveX = Math.cos(angle) * dist;
+            const moveY = Math.sin(angle) * dist;
+            
+            pupil.style.transform = `translate(calc(-50% + ${moveX}px), calc(-50% + ${moveY}px))`;
+        });
+
+    </script>
+</body>
+</html>
