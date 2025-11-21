@@ -1,0 +1,181 @@
+---
+import RoomLayout from '../../layouts/RoomLayout.astro';
+
+const fish = {
+  name: 'Акула',
+  emoji: '🦈',
+  framework: 'Angular',
+  color: 'from-slate-600 to-blue-700',
+  description: 'Enterprise фреймворк с TypeScript, dependency injection и RxJS для больших систем.',
+  features: [
+    'Строгая типизация с TypeScript',
+    'Dependency Injection встроен в ядро',
+    'RxJS для реактивного программирования',
+    'Встроенная маршрутизация',
+    'Полная архитектура для enterprise',
+    'Хорошая документация и инструментарий'
+  ],
+  pros: [
+    'Отличная архитектура',
+    'Полная типизация',
+    'Встроенное все необходимое',
+    'Хорошо подходит для больших команд',
+    'Много вакансий в enterprise'
+  ],
+  cons: [
+    'Крутая кривая обучения',
+    'Много boilerplate',
+    'Требует локальные node_modules',
+    'Может быть оverkill для малых проектов',
+    'Самый "тяжелый" из фреймворков'
+  ]
+};
+---
+
+<RoomLayout fish={fish}>
+  <section class="fish-details">
+    <div class="detail-section">
+      <h2>О Акуле 🦈</h2>
+      <p class="detail-intro">{fish.description}</p>
+      
+      <div class="features-grid">
+        <div class="feature-group">
+          <h3>✨ Возможности</h3>
+          <ul>
+            {fish.features.map((feature) => (
+              <li>{feature}</li>
+            ))}
+          </ul>
+        </div>
+        
+        <div class="feature-group pros">
+          <h3>👍 Преимущества</h3>
+          <ul>
+            {fish.pros.map((pro) => (
+              <li>{pro}</li>
+            ))}
+          </ul>
+        </div>
+        
+        <div class="feature-group cons">
+          <h3>⚠️ Недостатки</h3>
+          <ul>
+            {fish.cons.map((con) => (
+              <li>{con}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="code-section">
+      <h2>Быстрый старт</h2>
+      <pre><code>npm install -g @angular/cli
+ng new my-app
+cd my-app
+ng serve</code></pre>
+    </div>
+    
+    <div class="info-section">
+      <h2>Когда использовать Акулу?</h2>
+      <p>Выбирай Angular если:</p>
+      <ul>
+        <li>Работаешь в большой корпоративной среде</li>
+        <li>Нужна строгая архитектура и типизация</li>
+        <li>Требуется взаимодействие с большой командой</li>
+        <li>Проект очень сложный и требует масштабируемости</li>
+      </ul>
+    </div>
+  </section>
+</RoomLayout>
+
+<style>
+  .fish-details {
+    display: grid;
+    gap: 2rem;
+    margin: 2rem 0;
+  }
+  
+  .detail-section,
+  .code-section,
+  .info-section {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .detail-intro {
+    font-size: 1.1rem;
+    margin: 1rem 0 2rem 0;
+    line-height: 1.8;
+    opacity: 0.95;
+  }
+  
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  .feature-group {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 1.5rem;
+    border-left: 4px solid rgba(255, 255, 255, 0.5);
+  }
+  
+  .feature-group h3 {
+    margin-top: 0;
+    font-size: 1.1rem;
+  }
+  
+  .feature-group ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .feature-group li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+  
+  .feature-group li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+  }
+  
+  .pros {
+    border-left-color: #4ade80;
+  }
+  
+  .cons {
+    border-left-color: #f87171;
+  }
+  
+  .code-section pre {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 6px;
+    padding: 1rem;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  
+  .info-section ul {
+    margin: 1rem 0;
+    padding-left: 2rem;
+  }
+  
+  .info-section li {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+  }
+</style>

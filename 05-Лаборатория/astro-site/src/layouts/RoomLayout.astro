@@ -1,0 +1,266 @@
+---
+interface Props {
+  fish: {
+    name: string;
+    emoji: string;
+    framework: string;
+    color: string;
+    description: string;
+  };
+}
+
+const { fish } = Astro.props;
+
+const rooms = [
+  { name: 'Корюшка', path: '/rooms/smelt', emoji: '🐟', framework: 'Astro' },
+  { name: 'Форель', path: '/rooms/trout', emoji: '🐠', framework: 'Next.js' },
+  { name: 'Скумбрия', path: '/rooms/mackerel', emoji: '🐡', framework: 'Nuxt' },
+  { name: 'Окунь', path: '/rooms/perch', emoji: '🦐', framework: 'SolidJS' },
+  { name: 'Акула', path: '/rooms/shark', emoji: '🦈', framework: 'Angular' }
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{fish.name} - Аквариум Фреймворков</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        color: white;
+      }
+      
+      .container {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        min-height: 100vh;
+        gap: 1px;
+      }
+      
+      .sidebar {
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(10px);
+        padding: 2rem 1.5rem;
+        border-right: 1px solid rgba(255, 255, 255, 0.2);
+        overflow-y: auto;
+      }
+      
+      .sidebar-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.95);
+      }
+      
+      .rooms-tree {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      
+      .room-item {
+        margin-bottom: 0.8rem;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      
+      .room-link {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        padding: 1rem 1.2rem;
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        transition: all 0.3s;
+        border-left: 3px solid transparent;
+        font-size: 0.95rem;
+      }
+      
+      .room-link:hover {
+        background: rgba(255, 255, 255, 0.15);
+        border-left-color: rgba(255, 255, 255, 0.5);
+        color: white;
+      }
+      
+      .room-link.active {
+        background: rgba(255, 255, 255, 0.25);
+        border-left-color: rgba(255, 255, 255, 1);
+        color: white;
+        font-weight: 600;
+      }
+      
+      .room-emoji {
+        font-size: 1.3rem;
+        width: 1.5rem;
+        text-align: center;
+      }
+      
+      .room-info {
+        flex: 1;
+      }
+      
+      .room-name {
+        font-weight: 600;
+        display: block;
+        font-size: 0.9rem;
+      }
+      
+      .room-framework {
+        font-size: 0.75rem;
+        opacity: 0.7;
+      }
+      
+      .back-button {
+        display: block;
+        padding: 0.8rem 1.2rem;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 6px;
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        text-align: center;
+        margin-bottom: 1.5rem;
+        transition: all 0.3s;
+        font-size: 0.9rem;
+      }
+      
+      .back-button:hover {
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+      }
+      
+      .main-content {
+        padding: 3rem;
+        overflow-y: auto;
+        background: rgba(0, 0, 0, 0.1);
+      }
+      
+      .fish-header {
+        margin-bottom: 2rem;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      
+      .fish-header-content {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+      }
+      
+      .fish-emoji {
+        font-size: 5rem;
+        min-width: 100px;
+        text-align: center;
+      }
+      
+      .fish-info h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        font-weight: 800;
+      }
+      
+      .fish-info p {
+        font-size: 1.05rem;
+        opacity: 0.95;
+        line-height: 1.6;
+      }
+      
+      @media (max-width: 768px) {
+        .container {
+          grid-template-columns: 1fr;
+        }
+        
+        .sidebar {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+          padding: 1.5rem 1rem;
+          border-right: none;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+          gap: 1rem;
+        }
+        
+        .sidebar-title {
+          grid-column: 1 / -1;
+        }
+        
+        .room-item {
+          margin-bottom: 0;
+        }
+        
+        .room-link {
+          flex-direction: column;
+          padding: 0.8rem 0.5rem;
+        }
+        
+        .room-framework {
+          display: none;
+        }
+        
+        .fish-header-content {
+          flex-direction: column;
+          text-align: center;
+        }
+        
+        .main-content {
+          padding: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <aside class="sidebar">
+        <div class="sidebar-title">🏰 Замок Лилии</div>
+        <a href="/" class="back-button">← На главную</a>
+        
+        <ul class="rooms-tree">
+          {rooms.map((room) => (
+            <li class="room-item">
+              <a 
+                href={room.path}
+                class={`room-link ${currentPath === room.path ? 'active' : ''}`}
+              >
+                <span class="room-emoji">{room.emoji}</span>
+                <div class="room-info">
+                  <span class="room-name">{room.name}</span>
+                  <span class="room-framework">{room.framework}</span>
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </aside>
+      
+      <main class="main-content">
+        <div class="fish-header">
+          <div class="fish-header-content">
+            <div class="fish-emoji">{fish.emoji}</div>
+            <div class="fish-info">
+              <h1>{fish.name}</h1>
+              <p>{fish.description}</p>
+            </div>
+          </div>
+        </div>
+        
+        <slot />
+      </main>
+    </div>
+  </body>
+</html>

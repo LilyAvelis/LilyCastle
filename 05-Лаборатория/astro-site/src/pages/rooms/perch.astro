@@ -1,0 +1,179 @@
+---
+import RoomLayout from '../../layouts/RoomLayout.astro';
+
+const fish = {
+  name: 'Окунь',
+  emoji: '🦐',
+  framework: 'SolidJS',
+  color: 'from-green-400 to-emerald-500',
+  description: 'Реактивный фреймворк с JSX, маленький размер бандла и невероятная скорость.',
+  features: [
+    'Fine-grained reactivity',
+    'JSX синтаксис как в React',
+    'Очень маленький размер бандла',
+    'Встроенная маршрутизация',
+    'Отличная производительность',
+    'Компилируется в чистый JavaScript'
+  ],
+  pros: [
+    'Невероятно быстрый',
+    'Маленький бандл',
+    'React-подобный синтаксис',
+    'Отличная реактивность',
+    'Меньше boilerplate чем React'
+  ],
+  cons: [
+    'Меньше пакетов третьих сторон',
+    'Меньше вакансий',
+    'Документация может быть лучше'
+  ]
+};
+---
+
+<RoomLayout fish={fish}>
+  <section class="fish-details">
+    <div class="detail-section">
+      <h2>О Окуне 🦐</h2>
+      <p class="detail-intro">{fish.description}</p>
+      
+      <div class="features-grid">
+        <div class="feature-group">
+          <h3>✨ Возможности</h3>
+          <ul>
+            {fish.features.map((feature) => (
+              <li>{feature}</li>
+            ))}
+          </ul>
+        </div>
+        
+        <div class="feature-group pros">
+          <h3>👍 Преимущества</h3>
+          <ul>
+            {fish.pros.map((pro) => (
+              <li>{pro}</li>
+            ))}
+          </ul>
+        </div>
+        
+        <div class="feature-group cons">
+          <h3>⚠️ Недостатки</h3>
+          <ul>
+            {fish.cons.map((con) => (
+              <li>{con}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="code-section">
+      <h2>Быстрый старт</h2>
+      <pre><code>npx degit solidjs/templates/ts my-app
+cd my-app
+npm install
+npm run dev</code></pre>
+    </div>
+    
+    <div class="info-section">
+      <h2>Когда использовать Окуня?</h2>
+      <p>Выбирай SolidJS если:</p>
+      <ul>
+        <li>Хочешь максимальной производительности</li>
+        <li>Важен размер бандла</li>
+        <li>Нравится React, но хочешь большего</li>
+        <li>Работаешь над приложением где скорость критична</li>
+      </ul>
+    </div>
+  </section>
+</RoomLayout>
+
+<style>
+  .fish-details {
+    display: grid;
+    gap: 2rem;
+    margin: 2rem 0;
+  }
+  
+  .detail-section,
+  .code-section,
+  .info-section {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .detail-intro {
+    font-size: 1.1rem;
+    margin: 1rem 0 2rem 0;
+    line-height: 1.8;
+    opacity: 0.95;
+  }
+  
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  .feature-group {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 1.5rem;
+    border-left: 4px solid rgba(255, 255, 255, 0.5);
+  }
+  
+  .feature-group h3 {
+    margin-top: 0;
+    font-size: 1.1rem;
+  }
+  
+  .feature-group ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .feature-group li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+  
+  .feature-group li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+  }
+  
+  .pros {
+    border-left-color: #4ade80;
+  }
+  
+  .cons {
+    border-left-color: #f87171;
+  }
+  
+  .code-section pre {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 6px;
+    padding: 1rem;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  
+  .info-section ul {
+    margin: 1rem 0;
+    padding-left: 2rem;
+  }
+  
+  .info-section li {
+    margin: 0.5rem 0;
+    line-height: 1.6;
+  }
+</style>

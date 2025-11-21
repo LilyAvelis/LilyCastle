@@ -1,0 +1,210 @@
+---
+interface Fish {
+  name: string;
+  emoji: string;
+  framework: string;
+  description: string;
+  features: string[];
+  color: string;
+  path: string;
+}
+
+const fishes: Fish[] = [
+  {
+    name: 'Корюшка',
+    emoji: '🐟',
+    framework: 'Astro',
+    description: 'Мульти-фреймворковый статический генератор сайтов с "островами" компонентов.',
+    features: ['SEO-friendly', 'Быстрая загрузка', 'Идеальна для блогов', 'Поддержка React/Vue/Svelte'],
+    color: 'from-blue-400 to-cyan-500',
+    path: '/rooms/smelt'
+  },
+  {
+    name: 'Форель',
+    emoji: '🐠',
+    framework: 'Next.js',
+    description: 'React-based фреймворк с SSR/SSG для полнофункциональных приложений.',
+    features: ['Серверная сторона', 'API routes', 'Оптимизация изображений', 'Enterprise-ready'],
+    color: 'from-orange-400 to-red-500',
+    path: '/rooms/trout'
+  },
+  {
+    name: 'Скумбрия',
+    emoji: '🐡',
+    framework: 'Nuxt',
+    description: 'Vue-based фреймворк с отличными dev tools и красивым DX.',
+    features: ['Vue DevTools', 'Auto-routing', 'Module ecosystem', 'Auto-imports'],
+    color: 'from-purple-400 to-pink-500',
+    path: '/rooms/mackerel'
+  },
+  {
+    name: 'Окунь',
+    emoji: '🦐',
+    framework: 'SolidJS',
+    description: 'Реактивный фреймворк с JSX, быстрый как Svelte.',
+    features: ['Реактивность', 'Маленький размер', 'JSX синтаксис', 'Fine-grained reactivity'],
+    color: 'from-green-400 to-emerald-500',
+    path: '/rooms/perch'
+  },
+  {
+    name: 'Акула',
+    emoji: '🦈',
+    framework: 'Angular',
+    description: 'Enterprise фреймворк с TypeScript, dependency injection и RxJS.',
+    features: ['Типизация', 'RxJS', 'Dependency Injection', 'Строгая архитектура'],
+    color: 'from-slate-600 to-blue-700',
+    path: '/rooms/shark'
+  }
+];
+---
+
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🐟 Аквариум Фреймворков</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+      }
+      
+      .header {
+        text-align: center;
+        color: white;
+        padding: 60px 20px;
+        background: rgba(0, 0, 0, 0.2);
+      }
+      
+      .header h1 {
+        font-size: 3.5rem;
+        margin: 0;
+        font-weight: 800;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+      
+      .header p {
+        font-size: 1.2rem;
+        margin: 10px 0 0 0;
+        opacity: 0.95;
+      }
+      
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+      
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+      }
+      
+      .fish-card {
+        border-radius: 15px;
+        padding: 30px;
+        color: white;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s, box-shadow 0.3s;
+        backdrop-filter: blur(10px);
+        text-decoration: none;
+        display: block;
+        cursor: pointer;
+      }
+      
+      .fish-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+      }
+      
+      .fish-emoji {
+        font-size: 4rem;
+        margin-bottom: 15px;
+        display: block;
+      }
+      
+      .fish-name {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin: 10px 0;
+      }
+      
+      .fish-framework {
+        font-size: 1rem;
+        opacity: 0.9;
+        margin-bottom: 15px;
+        font-weight: 600;
+      }
+      
+      .fish-description {
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+        line-height: 1.6;
+      }
+      
+      .features {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      
+      .features li {
+        padding: 5px 0;
+        font-size: 0.85rem;
+        opacity: 0.9;
+      }
+      
+      .features li:before {
+        content: "✓ ";
+        font-weight: bold;
+        margin-right: 8px;
+      }
+      
+      .footer {
+        text-align: center;
+        color: white;
+        padding: 30px;
+        margin-top: 50px;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>🐟 Аквариум Фреймворков</h1>
+      <p>Выбирай рыбу по вкусу для своего проекта!</p>
+    </div>
+    
+    <div class="container">
+      <div class="grid">
+        {fishes.map((fish) => (
+          <a href={fish.path} class={`fish-card bg-gradient-to-br ${fish.color}`}>
+            <span class="fish-emoji">{fish.emoji}</span>
+            <div class="fish-name">{fish.name}</div>
+            <div class="fish-framework">{fish.framework}</div>
+            <p class="fish-description">{fish.description}</p>
+            <ul class="features">
+              {fish.features.map((feature) => (
+                <li>{feature}</li>
+              ))}
+            </ul>
+          </a>
+        ))}
+      </div>
+      
+      <div class="footer">
+        <p><strong>🏗️ Замок Лилии - Аквариум Фреймворков</strong></p>
+        <p>Интерактивный гайд по выбору и изучению веб-фреймворков</p>
+        <p style="font-family: monospace; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 5px; margin-top: 15px;">
+          powershell .\03-Аквариум\spawn-fish.ps1 -Fish smelt -Path "путь"
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
