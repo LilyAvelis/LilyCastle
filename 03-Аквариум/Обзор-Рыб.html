@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обзор Рыб в Аквариуме</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 50px;
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            color: #667eea;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1::after {
+            content: '🐟';
+            display: block;
+            font-size: 1.5em;
+            margin-top: 15px;
+        }
+
+        h2 {
+            color: #764ba2;
+            font-size: 1.8em;
+            margin: 35px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            font-weight: 600;
+        }
+
+        .fish-card {
+            background: linear-gradient(90deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.05) 100%);
+            margin: 15px 0;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .fish-card:hover {
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.25);
+        }
+
+        .fish-header {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            transition: background 0.2s ease;
+        }
+
+        .fish-header:hover {
+            background: rgba(102, 126, 234, 0.08);
+        }
+
+        .fish-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #764ba2;
+        }
+
+        .fish-emoji {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+
+        .fish-description {
+            color: #5a6c7d;
+            font-size: 0.95em;
+            margin-top: 5px;
+        }
+
+        .expand-icon {
+            font-size: 1.3em;
+            color: #667eea;
+            transition: transform 0.3s ease;
+        }
+
+        .expand-icon.expanded {
+            transform: rotate(180deg);
+        }
+
+        .fish-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 20px;
+        }
+
+        .fish-content.expanded {
+            max-height: 500px;
+            padding: 0 20px 20px 20px;
+        }
+
+        .fish-details {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .detail-item {
+            margin: 12px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .detail-item::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .badge-good {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .badge-bad {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        code {
+            background: #f8f9fa;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #e83e8c;
+            font-size: 0.9em;
+        }
+
+        .conclusion {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 30px;
+            border: 2px solid #667eea;
+        }
+
+        .conclusion p {
+            font-weight: 500;
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        .conclusion ul {
+            list-style: none;
+        }
+
+        .conclusion li {
+            padding: 12px 20px;
+            margin: 10px 0;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .conclusion strong {
+            color: #764ba2;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+            color: #7f8c8d;
+            font-size: 0.95em;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 25px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .fish-header {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Обзор Рыб в Аквариуме</h1>
+
+        <h2>Список Рыб</h2>
+
+        <!-- Trout -->
+        <div class="fish-card">
+            <div class="fish-header" onclick="toggleFish('trout')">
+                <div>
+                    <div class="fish-title">
+                        <span class="fish-emoji">🐟</span>
+                        trout (Форель) - Next.js
+                        <span class="badge badge-bad">Вредная</span>
+                    </div>
+                    <div class="fish-description">React-based фреймворк с SSR/SSG</div>
+                </div>
+                <span class="expand-icon" id="trout-icon">▼</span>
+            </div>
+            <div class="fish-content" id="trout-content">
+                <div class="fish-details">
+                    <div class="detail-item"><strong>Описание:</strong> Хорош для больших apps, гибкий и мощный.</div>
+                    <div class="detail-item"><strong>Симлинки:</strong> Не работает с симлинком — Turbopack блокирует внешние пути.</div>
+                    <div class="detail-item"><strong>Требования:</strong> Локальные <code>node_modules</code> в каждом проекте.</div>
+                    <div class="detail-item"><strong>Tier:</strong> High tier — для enterprise проектов.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mackerel -->
+        <div class="fish-card">
+            <div class="fish-header" onclick="toggleFish('mackerel')">
+                <div>
+                    <div class="fish-title">
+                        <span class="fish-emoji">🐠</span>
+                        mackerel (Скумбрия) - Nuxt
+                        <span class="badge badge-good">Живёт нормально</span>
+                    </div>
+                    <div class="fish-description">Vue-based фреймворк с SSR/SSG</div>
+                </div>
+                <span class="expand-icon" id="mackerel-icon">▼</span>
+            </div>
+            <div class="fish-content" id="mackerel-content">
+                <div class="fish-details">
+                    <div class="detail-item"><strong>Описание:</strong> Удобный, с отличными dev tools (Vue DevTools в браузере).</div>
+                    <div class="detail-item"><strong>Симлинки:</strong> Работает с симлинком без дополнительных настроек.</div>
+                    <div class="detail-item"><strong>Tier:</strong> Mid tier — для проектов с dev tools.</div>
+                    <div class="detail-item"><strong>Рекомендация:</strong> Идеален для больших проектов — гибкий, с отличными dev tools.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Perch -->
+        <div class="fish-card">
+            <div class="fish-header" onclick="toggleFish('perch')">
+                <div>
+                    <div class="fish-title">
+                        <span class="fish-emoji">🐡</span>
+                        perch (Окунь) - SolidJS
+                        <span class="badge badge-good">Живёт нормально</span>
+                    </div>
+                    <div class="fish-description">Реактивный фреймворк с JSX</div>
+                </div>
+                <span class="expand-icon" id="perch-icon">▼</span>
+            </div>
+            <div class="fish-content" id="perch-content">
+                <div class="fish-details">
+                    <div class="detail-item"><strong>Описание:</strong> Быстрый, как Svelte, но с React-подобным синтаксисом.</div>
+                    <div class="detail-item"><strong>Симлинки:</strong> Работает с симлинком без проблем.</div>
+                    <div class="detail-item"><strong>Рекомендация:</strong> Идеален для средних проектов — реактивный, быстрый, с JSX-синтаксисом.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Smelt -->
+        <div class="fish-card">
+            <div class="fish-header" onclick="toggleFish('smelt')">
+                <div>
+                    <div class="fish-title">
+                        <span class="fish-emoji">🦐</span>
+                        smelt (Корюшка) - Astro
+                        <span class="badge badge-good">Живёт нормально</span>
+                    </div>
+                    <div class="fish-description">Мульти-фреймворковый для статических сайтов</div>
+                </div>
+                <span class="expand-icon" id="smelt-icon">▼</span>
+            </div>
+            <div class="fish-content" id="smelt-content">
+                <div class="fish-details">
+                    <div class="detail-item"><strong>Описание:</strong> С "островами" компонентов. Идеален для SEO и простых страниц.</div>
+                    <div class="detail-item"><strong>Симлинки:</strong> Работает с симлинком после добавления <code>fs.allow</code> в <code>astro.config.mjs</code>.</div>
+                    <div class="detail-item"><strong>Tier:</strong> Low tier — для "поиграться".</div>
+                    <div class="detail-item"><strong>Рекомендация:</strong> Идеален для мелких проектов — быстрый, SEO-friendly для статических сайтов.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Shark -->
+        <div class="fish-card">
+            <div class="fish-header" onclick="toggleFish('shark')">
+                <div>
+                    <div class="fish-title">
+                        <span class="fish-emoji">🦈</span>
+                        shark (Акула) - Angular
+                        <span class="badge badge-bad">Вредная</span>
+                    </div>
+                    <div class="fish-description">Enterprise фреймворк с TypeScript</div>
+                </div>
+                <span class="expand-icon" id="shark-icon">▼</span>
+            </div>
+            <div class="fish-content" id="shark-content">
+                <div class="fish-details">
+                    <div class="detail-item"><strong>Описание:</strong> С dependency injection, RxJS. Хорош для крупных приложений с строгой архитектурой.</div>
+                    <div class="detail-item"><strong>Симлинки:</strong> Симлинк требует прав администратора (SymbolicLink).</div>
+                    <div class="detail-item"><strong>Требования:</strong> Использует локальные <code>node_modules</code>.</div>
+                    <div class="detail-item"><strong>Tier:</strong> High tier — для строгих архитектур.</div>
+                </div>
+            </div>
+        </div>
+
+        <h2>Вывод</h2>
+        <div class="conclusion">
+            <p>Все проекты оставлены как наследие успешного тестирования фреймворков в Аквариуме. Для будущих ИИ:</p>
+            <ul>
+                <li><strong>Большие проекты</strong>: Nuxt (mackerel) — гибкий, с отличными dev tools.</li>
+                <li><strong>Мелкие проекты</strong>: Astro (smelt) — быстрый, SEO-friendly для статических сайтов.</li>
+                <li><strong>Средние проекты</strong>: SolidJS (perch) — реактивный, быстрый, с JSX-синтаксисом.</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            Обновлено: 21.11.2025
+        </div>
+    </div>
+
+    <script>
+        function toggleFish(fishId) {
+            const content = document.getElementById(fishId + '-content');
+            const icon = document.getElementById(fishId + '-icon');
+            
+            content.classList.toggle('expanded');
+            icon.classList.toggle('expanded');
+        }
+    </script>
+</body>
+</html>

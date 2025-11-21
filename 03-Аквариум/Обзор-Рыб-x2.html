@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обзор Рыб в Аквариуме</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 50px;
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            color: #667eea;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1::after {
+            content: '🐟';
+            display: block;
+            font-size: 1.5em;
+            margin-top: 15px;
+        }
+
+        h2 {
+            color: #764ba2;
+            font-size: 1.8em;
+            margin: 35px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            font-weight: 600;
+        }
+
+        .fish-card {
+            background: linear-gradient(90deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.05) 100%);
+            margin: 15px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        .fish-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.2);
+        }
+
+        .fish-header {
+            padding: 20px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(90deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.1) 100%);
+            transition: background 0.3s ease;
+        }
+
+        .fish-header:hover {
+            background: linear-gradient(90deg, rgba(102, 126, 234, 0.25) 0%, rgba(118, 75, 162, 0.2) 100%);
+        }
+
+        .fish-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #764ba2;
+        }
+
+        .fish-emoji {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+
+        .fish-toggle {
+            font-size: 1.5em;
+            color: #667eea;
+            transition: transform 0.3s ease;
+        }
+
+        .fish-card.active .fish-toggle {
+            transform: rotate(180deg);
+        }
+
+        .fish-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 25px;
+        }
+
+        .fish-card.active .fish-content {
+            max-height: 500px;
+            padding: 20px 25px 25px;
+        }
+
+        .fish-description {
+            color: #34495e;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .fish-details {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        .fish-details strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        code {
+            background: #fff;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #e83e8c;
+            font-size: 0.9em;
+            border: 1px solid #f0f0f0;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .status-good {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-bad {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .tier-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+
+        .tier-low {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .tier-mid {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .tier-high {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .conclusion {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 20px;
+            border: 2px solid #667eea;
+        }
+
+        .conclusion p {
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .conclusion ul {
+            list-style: none;
+        }
+
+        .conclusion li {
+            background: rgba(255, 255, 255, 0.7);
+            margin: 10px 0;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+            color: #7f8c8d;
+            font-size: 0.95em;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 25px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .fish-title {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Обзор Рыб в Аквариуме</h1>
+
+        <h2>Список Рыб</h2>
+
+        <div class="fish-card">
+            <div class="fish-header" onclick="toggleFish(this)">
+                <div>
+                    <span class="fish-emoji">🐟</span>
+                    <span class="fish-title">trout (Форель)</span>
+                    <span class="tier-badge tier-high">High Tier</span>
+                </div>
+                <span class="fish-toggle">▼</span>
+            </div>
+            <div class="fish-content">
+                <p class="fish-description">
+                    <strong>Next.js</strong> — React-based фреймворк с SSR/SSG. Хорош для больших apps, гибкий.
+                </p>
+                <div class="fish-details">
+                    <strong>Поведение с симлинками:</strong>
+                    Вредная рыба — не работает с симлинком (Turbopack блокирует внешние пути). Требует локальные <code>node_modules</code> в каждом проекте.
+                    <span class="status-badge status-bad">❌ Не работает</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="fish-card">
+            <div class="fish-header" onclick="toggleFish(this)">
+                <div>
+                    <span class="fish-emoji">🐟</span>
+                    <span class="fish-title">mackerel (Скумбрия)</span>
+                    <span class="tier-badge tier-mid">Mid Tier</span>
+                </div>
+                <span class="fish-toggle">▼</span>
+            </div>
+            <div class="fish-content">
+                <p class="fish-description">
+                    <strong>Nuxt</strong> — Vue-based фреймворк с SSR/SSG. Удобный, с отличными dev tools (Vue DevTools в браузере).
+                </p>
+                <div class="fish-details">
+                    <strong>Поведение с симлинками:</strong>
+                    Живёт нормально — работает с симлинком без дополнительных настроек.
+                    <span class="status-badge status-good">✅ Работает</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="fish-card">
+            <div class="fish-header" onclick="toggleFish(this)">
+                <div>
+                    <span class="fish-emoji">🐟</span>
+                    <span class="fish-title">perch (Окунь)</span>
+                    <span class="tier-badge tier-mid">Mid Tier</span>
+                </div>
+                <span class="fish-toggle">▼</span>
+            </div>
+            <div class="fish-content">
+                <p class="fish-description">
+                    <strong>SolidJS</strong> — реактивный фреймворк с JSX. Быстрый, как Svelte, но с React-подобным синтаксисом.
+                </p>
+                <div class="fish-details">
+                    <strong>Поведение с симлинками:</strong>
+                    Живёт нормально — работает с симлинком.
+                    <span class="status-badge status-good">✅ Работает</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="fish-card">
+            <div class="fish-header" onclick="toggleFish(this)">
+                <div>
+                    <span class="fish-emoji">🐟</span>
+                    <span class="fish-title">smelt (Корюшка)</span>
+                    <span class="tier-badge tier-low">Low Tier</span>
+                </div>
+                <span class="fish-toggle">▼</span>
+            </div>
+            <div class="fish-content">
+                <p class="fish-description">
+                    <strong>Astro</strong> — Мульти-фреймворковый для статических сайтов с "островами" компонентов. Идеален для SEO и простых страниц.
+                </p>
+                <div class="fish-details">
+                    <strong>Поведение с симлинками:</strong>
+                    Живёт нормально — работает с симлинком после добавления <code>fs.allow</code> в <code>astro.config.mjs</code>.
+                    <span class="status-badge status-good">✅ Работает</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="fish-card">
+            <div class="fish-header" onclick="toggleFish(this)">
+                <div>
+                    <span class="fish-emoji">🦈</span>
+                    <span class="fish-title">shark (Акула)</span>
+                    <span class="tier-badge tier-high">High Tier</span>
+                </div>
+                <span class="fish-toggle">▼</span>
+            </div>
+            <div class="fish-content">
+                <p class="fish-description">
+                    <strong>Angular</strong> — Enterprise фреймворк с TypeScript, dependency injection, RxJS. Хорош для крупных приложений с строгой архитектурой.
+                </p>
+                <div class="fish-details">
+                    <strong>Поведение с симлинками:</strong>
+                    Вредная рыба — симлинк требует прав администратора (SymbolicLink). Использует локальные <code>node_modules</code>.
+                    <span class="status-badge status-bad">❌ Не работает</span>
+                </div>
+            </div>
+        </div>
+
+        <h2>Вывод</h2>
+        <div class="conclusion">
+            <p>Все проекты оставлены как наследие успешного тестирования фреймворков в Аквариуме. Для будущих ИИ:</p>
+            <ul>
+                <li><strong>Большие проекты</strong>: Nuxt (mackerel) — гибкий, с отличными dev tools.</li>
+                <li><strong>Мелкие проекты</strong>: Astro (smelt) — быстрый, SEO-friendly для статических сайтов.</li>
+                <li><strong>Средние проекты</strong>: SolidJS (perch) — реактивный, быстрый, с JSX-синтаксисом.</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            Обновлено: 21.11.2025
+        </div>
+    </div>
+
+    <script>
+        function toggleFish(header) {
+            const card = header.parentElement;
+            const allCards = document.querySelectorAll('.fish-card');
+            
+            // Закрываем все остальные карточки
+            allCards.forEach(otherCard => {
+                if (otherCard !== card && otherCard.classList.contains('active')) {
+                    otherCard.classList.remove('active');
+                }
+            });
+            
+            // Переключаем текущую карточку
+            card.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

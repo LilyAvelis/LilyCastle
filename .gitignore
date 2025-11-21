@@ -1,0 +1,30 @@
+# Python
+01-Библиотека/python-libs/
+
+# Node.js
+01-Библиотека/js-libs/node_modules/
+**/node_modules/
+
+# Проекты с локальными node_modules
+03-Аквариум/trout/node_modules/
+03-Аквариум/shark/node_modules/
+03-Аквариум/sole/node_modules/
+
+# Временные файлы
+.DS_Store
+*.log
+*.tmp
+
+# IDE
+.vscode/
+.idea/
+
+# Build outputs
+**/dist/
+**/build/
+**/.next/
+**/out/
+
+# Environment
+.env
+.env.local
