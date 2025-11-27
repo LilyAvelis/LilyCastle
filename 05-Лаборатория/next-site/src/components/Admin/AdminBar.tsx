@@ -50,7 +50,7 @@ export default function AdminBar({ onAddProduct, onManageCategories }: AdminBarP
             onClick={() => setShowLogin(false)}
           >
             <div 
-              className="bg-white p-8 rounded-3xl shadow-2xl w-full max-w-md text-center"
+              className="bg-white p-6 md:p-8 rounded-3xl shadow-2xl w-full max-w-md text-center"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="text-5xl mb-4">🧐</div>
@@ -70,11 +70,11 @@ export default function AdminBar({ onAddProduct, onManageCategories }: AdminBarP
                 />
               </div>
 
-              <div className="flex gap-3">
-                <button onClick={() => setShowLogin(false)} className="flex-1 py-4 rounded-xl text-stone-600 font-bold hover:bg-stone-200 transition">
+              <div className="flex flex-col-reverse md:flex-row gap-3">
+                <button onClick={() => setShowLogin(false)} className="flex-1 py-3 md:py-4 rounded-xl text-stone-600 font-bold hover:bg-stone-200 transition">
                   Я просто гость
                 </button>
-                <button onClick={handleLogin} className="flex-1 py-4 rounded-xl bg-rose-500 text-white font-bold hover:bg-rose-600 shadow-lg shadow-rose-200 transition">
+                <button onClick={handleLogin} className="flex-1 py-3 md:py-4 rounded-xl bg-rose-500 text-white font-bold hover:bg-rose-600 shadow-lg shadow-rose-200 transition">
                   Войти
                 </button>
               </div>
@@ -86,24 +86,24 @@ export default function AdminBar({ onAddProduct, onManageCategories }: AdminBarP
   }
 
   return (
-    <div className="bg-stone-900 text-white py-3 px-6 sticky top-0 z-[60] flex justify-between items-center shadow-lg">
-      <div className="flex items-center gap-4">
-        <span className="font-mono text-rose-400 font-bold">ADMIN MODE</span>
-        <span className="text-stone-500 text-sm">|</span>
+    <div className="bg-stone-900 text-white py-3 px-4 md:px-6 sticky top-0 z-[60] flex justify-between items-center shadow-lg overflow-x-auto">
+      <div className="flex items-center gap-2 md:gap-4">
+        <span className="font-mono text-rose-400 font-bold hidden md:inline">ADMIN MODE</span>
+        <span className="text-stone-500 text-sm hidden md:inline">|</span>
         <button 
           onClick={onAddProduct}
-          className="bg-rose-500 hover:bg-rose-600 text-white px-4 py-1.5 rounded-lg text-sm font-bold transition flex items-center gap-2"
+          className="bg-rose-500 hover:bg-rose-600 text-white px-3 py-1.5 md:px-4 rounded-lg text-xs md:text-sm font-bold transition flex items-center gap-1 md:gap-2 whitespace-nowrap"
         >
-          <span>➕</span> Добавить товар
+          <span>➕</span> <span className="hidden sm:inline">Добавить товар</span><span className="sm:hidden">Товар</span>
         </button>
         <button 
           onClick={onManageCategories}
-          className="bg-stone-700 hover:bg-stone-600 text-white px-4 py-1.5 rounded-lg text-sm font-bold transition flex items-center gap-2"
+          className="bg-stone-700 hover:bg-stone-600 text-white px-3 py-1.5 md:px-4 rounded-lg text-xs md:text-sm font-bold transition flex items-center gap-1 md:gap-2 whitespace-nowrap"
         >
-          <span>📂</span> Категории
+          <span>📂</span> <span className="hidden sm:inline">Категории</span><span className="sm:hidden">Кат.</span>
         </button>
       </div>
-      <button onClick={logout} className="text-stone-400 hover:text-white text-sm underline">
+      <button onClick={logout} className="text-stone-400 hover:text-white text-xs md:text-sm underline ml-4 whitespace-nowrap">
         Выйти
       </button>
     </div>

@@ -28,3 +28,7 @@
 # Environment
 .env
 .env.local
+
+# Большие локальные приложения (не для Git)
+05-Лаборатория/kitty-mechanic-site/
+Тронный-зал/Upscayl/

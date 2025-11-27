@@ -55,29 +55,29 @@ function SortableItem({ category, onDelete }: { category: Category; onDelete: (i
     <div 
       ref={setNodeRef} 
       style={style} 
-      className={`flex items-center gap-3 p-3 bg-stone-50 rounded-xl border ${isDragging ? 'border-rose-400 shadow-lg' : 'border-stone-200'}`}
+      className={`flex items-center gap-2 md:gap-3 p-2 md:p-3 bg-stone-50 rounded-xl border ${isDragging ? 'border-rose-400 shadow-lg' : 'border-stone-200'}`}
     >
       {/* Drag Handle */}
       <div 
         {...attributes} 
         {...listeners} 
-        className="cursor-grab active:cursor-grabbing p-2 text-stone-400 hover:text-stone-600 touch-none"
+        className="cursor-grab active:cursor-grabbing p-2 text-stone-400 hover:text-stone-600 touch-none flex-shrink-0"
       >
         ⠿
       </div>
       
-      <div className="w-12 h-12 flex items-center justify-center bg-white rounded-lg text-2xl border border-stone-100 select-none">
+      <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-white rounded-lg text-xl md:text-2xl border border-stone-100 select-none flex-shrink-0">
         {category.emoji}
       </div>
       
-      <div className="flex-grow select-none">
-        <h3 className="font-bold text-black">{category.name}</h3>
+      <div className="flex-grow select-none min-w-0">
+        <h3 className="font-bold text-black truncate">{category.name}</h3>
         <p className="text-xs text-stone-500 truncate">{category.description}</p>
       </div>
       
       <button 
         onClick={() => onDelete(category.id, category.name)}
-        className="p-2 text-stone-400 hover:text-rose-500 transition"
+        className="p-2 text-stone-400 hover:text-rose-500 transition flex-shrink-0"
         title="Удалить"
       >
         🗑️
@@ -209,15 +209,15 @@ export default function CategoryManagerModal({ isOpen, onClose, categories: init
       onClick={onClose}
     >
       <div 
-        className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl overflow-hidden flex flex-col max-h-[90vh]"
+        className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl overflow-hidden flex flex-col max-h-[90vh] mx-4 md:mx-0"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="p-6 border-b border-stone-100 flex justify-between items-center bg-stone-50">
-          <h2 className="text-xl font-bold text-black">📂 Управление категориями</h2>
-          <button onClick={onClose} className="text-stone-400 hover:text-black">✕</button>
+        <div className="p-4 md:p-6 border-b border-stone-100 flex justify-between items-center bg-stone-50">
+          <h2 className="text-lg md:text-xl font-bold text-black">📂 Управление категориями</h2>
+          <button onClick={onClose} className="text-stone-400 hover:text-black p-2">✕</button>
         </div>
 
-        <div className="p-6 overflow-y-auto flex-grow">
+        <div className="p-4 md:p-6 overflow-y-auto flex-grow">
           {/* Список категорий (Drag & Drop) */}
           <div className="space-y-3 mb-8">
             <DndContext 
@@ -276,9 +276,9 @@ export default function CategoryManagerModal({ isOpen, onClose, categories: init
                   value={newCategory.description}
                   onChange={e => setNewCategory({...newCategory, description: e.target.value})}
                 />
-                <div className="flex gap-2">
-                  <button onClick={() => setIsAdding(false)} className="flex-1 py-2 bg-white text-stone-500 rounded-lg border border-stone-200 hover:bg-stone-50">Отмена</button>
-                  <button onClick={handleAdd} className="flex-1 py-2 bg-rose-500 text-white rounded-lg font-bold hover:bg-rose-600">Создать</button>
+                <div className="flex flex-col-reverse md:flex-row gap-2">
+                  <button onClick={() => setIsAdding(false)} className="flex-1 py-3 md:py-2 bg-white text-stone-500 rounded-lg border border-stone-200 hover:bg-stone-50">Отмена</button>
+                  <button onClick={handleAdd} className="flex-1 py-3 md:py-2 bg-rose-500 text-white rounded-lg font-bold hover:bg-rose-600">Создать</button>
                 </div>
               </div>
             </div>
@@ -293,14 +293,14 @@ export default function CategoryManagerModal({ isOpen, onClose, categories: init
 
           {/* Неопределенные товары */}
           {undefinedCount > 0 && (
-            <div className="mt-8 p-4 bg-orange-50 border border-orange-200 rounded-xl flex items-center justify-between">
+            <div className="mt-8 p-4 bg-orange-50 border border-orange-200 rounded-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-0">
               <div>
                 <h3 className="font-bold text-orange-800">⚠️ Неопределенные товары: {undefinedCount}</h3>
                 <p className="text-xs text-orange-600">Товары без категории (корзина)</p>
               </div>
               <button 
                 onClick={handleClearUndefined}
-                className="px-4 py-2 bg-orange-200 text-orange-800 rounded-lg font-bold hover:bg-orange-300 text-sm"
+                className="w-full md:w-auto px-4 py-3 md:py-2 bg-orange-200 text-orange-800 rounded-lg font-bold hover:bg-orange-300 text-sm"
               >
                 Очистить всё
               </button>

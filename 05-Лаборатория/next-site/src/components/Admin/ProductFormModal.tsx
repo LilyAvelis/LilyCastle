@@ -118,19 +118,19 @@ export default function ProductFormModal({ isOpen, onClose, productToEdit, categ
       onClick={onClose}
     >
       <div 
-        className="bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden flex flex-col max-h-[90vh]"
+        className="bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden flex flex-col max-h-[90vh] mx-4 md:mx-0"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="p-6 border-b border-stone-100 flex justify-between items-center bg-stone-50">
-          <h2 className="text-xl font-bold text-stone-800">
+        <div className="p-4 md:p-6 border-b border-stone-100 flex justify-between items-center bg-stone-50">
+          <h2 className="text-lg md:text-xl font-bold text-stone-800">
             {productToEdit ? '✏️ Редактировать товар' : '✨ Новый товар'}
           </h2>
-          <button onClick={onClose} className="text-stone-400 hover:text-stone-600">
+          <button onClick={onClose} className="text-stone-400 hover:text-stone-600 p-2">
             ✕
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="p-6 overflow-y-auto flex-grow space-y-4">
+        <form onSubmit={handleSubmit} className="p-4 md:p-6 overflow-y-auto flex-grow space-y-4">
           {/* Категория */}
           <div>
             <label className="block text-sm font-bold text-black mb-1">Категория</label>
@@ -227,21 +227,21 @@ export default function ProductFormModal({ isOpen, onClose, productToEdit, categ
           </div>
         </form>
 
-        <div className="p-6 border-t border-stone-100 bg-stone-50 flex justify-between gap-3">
+        <div className="p-4 md:p-6 border-t border-stone-100 bg-stone-50 flex flex-col-reverse md:flex-row justify-between gap-3">
           {productToEdit && (
             <button
               type="button"
               onClick={handleDelete}
-              className="px-4 py-2 rounded-lg text-rose-500 hover:bg-rose-50 transition font-medium"
+              className="px-4 py-2 rounded-lg text-rose-500 hover:bg-rose-50 transition font-medium w-full md:w-auto text-center"
               disabled={loading}
             >
               Удалить
             </button>
           )}
-          <div className="flex gap-3 ml-auto">
+          <div className="flex gap-3 ml-auto w-full md:w-auto">
             <button
               onClick={onClose}
-              className="px-4 py-2 rounded-lg text-stone-600 hover:bg-stone-200 transition"
+              className="px-4 py-2 rounded-lg text-stone-600 hover:bg-stone-200 transition flex-1 md:flex-none"
               disabled={loading}
             >
               Отмена
@@ -249,7 +249,7 @@ export default function ProductFormModal({ isOpen, onClose, productToEdit, categ
             <button
               onClick={handleSubmit}
               disabled={loading}
-              className="px-6 py-2 rounded-lg bg-rose-400 text-white font-medium hover:bg-rose-500 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+              className="px-6 py-2 rounded-lg bg-rose-400 text-white font-medium hover:bg-rose-500 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 flex-1 md:flex-none"
             >
               {loading ? 'Сохранение...' : 'Сохранить'}
             </button>
