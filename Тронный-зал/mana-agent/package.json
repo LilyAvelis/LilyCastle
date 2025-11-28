@@ -1,0 +1,107 @@
+{
+  "name": "mana-agent",
+  "displayName": "Mana Agent",
+  "description": "AI Agent with Mana-based resource management - Lily's custom Copilot alternative",
+  "version": "0.0.1",
+  "publisher": "lily-castle",
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "AI",
+    "Chat"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "chatParticipants": [
+      {
+        "id": "mana-agent.lily",
+        "fullName": "Mana Agent",
+        "name": "mana",
+        "description": "AI Agent with Mana-based resource management",
+        "isSticky": true,
+        "commands": [
+          {
+            "name": "status",
+            "description": "Show current mana status and rank"
+          },
+          {
+            "name": "think",
+            "description": "Free thinking mode - no mana cost"
+          },
+          {
+            "name": "act",
+            "description": "Action mode - commits mana for real operations"
+          }
+        ]
+      }
+    ],
+    "commands": [
+      {
+        "command": "mana-agent.showStatus",
+        "title": "Mana Agent: Show Status"
+      },
+      {
+        "command": "mana-agent.resetMana",
+        "title": "Mana Agent: Reset Mana (Admin Only)"
+      }
+    ],
+    "configuration": {
+      "title": "Mana Agent",
+      "properties": {
+        "mana-agent.initialMana": {
+          "type": "number",
+          "default": 10,
+          "description": "Initial mana pool for new agents"
+        },
+        "mana-agent.manaPerToken": {
+          "type": "number",
+          "default": 0.001,
+          "description": "Mana cost per output token"
+        },
+        "mana-agent.successMultiplier": {
+          "type": "number",
+          "default": 1.5,
+          "description": "Mana multiplier on successful action completion"
+        },
+        "mana-agent.rankThresholds": {
+          "type": "array",
+          "default": [10, 30, 100, 300, 1000, 3000, 10000],
+          "description": "Mana thresholds for rank progression"
+        }
+      }
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "mana-agent-sidebar",
+          "title": "Mana Agent",
+          "icon": "resources/mana-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "mana-agent-sidebar": [
+        {
+          "id": "mana-agent.statusView",
+          "name": "Agent Status",
+          "type": "webview"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.100.0",
+    "typescript": "^5.3.3"
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "name": "garden",
+  "displayName": "Garden",
+  "description": "AI Chat Extension with OpenRouter API",
+  "version": "0.0.1",
+  "publisher": "lily-castle",
+  "engines": {
+    "vscode": "^1.100.0"
+  },
+  "categories": [
+    "AI",
+    "Chat"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "garden.openChat",
+        "title": "Garden: Open Chat"
+      },
+      {
+        "command": "garden.setApiKey",
+        "title": "Garden: Set OpenRouter API Key"
+      },
+      {
+        "command": "garden.selectModel",
+        "title": "Garden: Select Model"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "garden-sidebar",
+          "title": "Garden",
+          "icon": "resources/garden-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "garden-sidebar": [
+        {
+          "type": "webview",
+          "id": "garden.chatView",
+          "name": "Chat"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Garden",
+      "properties": {
+        "garden.openRouterApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "OpenRouter API Key"
+        },
+        "garden.model": {
+          "type": "string",
+          "default": "anthropic/claude-sonnet-4",
+          "description": "Model to use (OpenRouter model ID)"
+        },
+        "garden.systemPrompt": {
+          "type": "string",
+          "default": "You are a helpful AI assistant.",
+          "description": "System prompt for the AI"
+        },
+        "garden.httpReferer": {
+          "type": "string",
+          "default": "https://github.com/LilyAvelis/LilyCastle",
+          "description": "Value sent in the HTTP-Referer header. Use a URL you control so OpenRouter can verify your API key."
+        },
+        "garden.appTitle": {
+          "type": "string",
+          "default": "Garden VS Code Extension",
+          "description": "Value sent in the X-Title header to describe your integration to OpenRouter."
+        },
+        "garden.mongoUri": {
+          "type": "string",
+          "default": "mongodb://localhost:27017",
+          "description": "MongoDB connection URI for the Ledger system."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/uuid": "^10.0.0",
+    "@types/vscode": "^1.100.0",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "mongodb": "^7.0.0",
+    "uuid": "^13.0.0"
+  }
+}
