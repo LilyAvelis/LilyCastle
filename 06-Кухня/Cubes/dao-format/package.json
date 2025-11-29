@@ -1,0 +1,26 @@
+{
+  "name": "garden-dao-format",
+  "version": "0.0.1",
+  "description": "Китайская голова для кода - .dao формат",
+  "main": "dist/index.js",
+  "bin": {
+    "dao": "./bin/dao.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "node dist/test/test-dao.js",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": ["dao", "chinese-head", "code-ontology"],
+  "author": "Lily",
+  "license": "MIT",
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.5",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  }
+}

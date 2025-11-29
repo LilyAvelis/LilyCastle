@@ -35,10 +35,14 @@ interface RequestMetadata {
     userAgent: string;
 }
 
+const MODELS_CACHE_TTL = 1000 * 60 * 5; // 5 minutes
+
 export class OpenRouterClient {
     private context: vscode.ExtensionContext;
     private baseUrl = 'https://openrouter.ai/api/v1';
     private outputChannel: vscode.OutputChannel;
+    private modelsCache: { data: OpenRouterModel[]; fetchedAt: number } | null = null;
+    private modelNameCache = new Map<string, string>();
 
     constructor(context: vscode.ExtensionContext) {
         this.context = context;
@@ -79,15 +83,36 @@ export class OpenRouterClient {
     }
 
     /**
-     * Fetch all available models from OpenRouter
+     * Fetch all available models from OpenRouter (with caching)
      */
     async getAvailableModels(): Promise<OpenRouterModel[]> {
+        const now = Date.now();
+        if (this.modelsCache && now - this.modelsCache.fetchedAt < MODELS_CACHE_TTL) {
+            return this.modelsCache.data;
+        }
+
+        const metadata = this.getRequestMetadata();
+        const headers: Record<string, string> = {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'X-Title': metadata.title,
+            'User-Agent': metadata.userAgent
+        };
+
+        const apiKey = await this.getApiKey();
+        if (apiKey) {
+            headers['Authorization'] = `Bearer ${apiKey}`;
+        }
+
+        if (metadata.referer) {
+            headers['HTTP-Referer'] = metadata.referer;
+            headers['Referer'] = metadata.referer;
+        }
+
         try {
             const response = await fetch(`${this.baseUrl}/models`, {
                 method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
+                headers
             });
 
             if (!response.ok) {
@@ -95,11 +120,46 @@ export class OpenRouterClient {
             }
 
             const data = await response.json() as { data: OpenRouterModel[] };
-            return data.data || [];
+            const models = data.data || [];
+            this.modelsCache = { data: models, fetchedAt: now };
+            models.forEach(model => {
+                if (model.name) {
+                    this.modelNameCache.set(model.id, model.name);
+                }
+            });
+            return models;
         } catch (error) {
-            console.error('Failed to fetch models:', error);
+            this.logError('Failed to fetch models from OpenRouter', error);
+            if (this.modelsCache) {
+                return this.modelsCache.data;
+            }
             return [];
         }
+    }
+
+    /**
+     * Get display name for a model ID from OpenRouter
+     * Example: 'anthropic/claude-sonnet-4' -> 'Claude Sonnet 4'
+     */
+    async getModelDisplayName(modelId: string): Promise<string> {
+        if (this.modelNameCache.has(modelId)) {
+            return this.modelNameCache.get(modelId)!;
+        }
+
+        try {
+            const models = await this.getAvailableModels();
+            const found = models.find(m => m.id === modelId);
+            if (found?.name) {
+                this.modelNameCache.set(modelId, found.name);
+                return found.name;
+            }
+        } catch (error) {
+            this.logError('Failed to resolve model display name', error);
+        }
+
+        const fallback = this.buildFriendlyModelName(modelId);
+        this.modelNameCache.set(modelId, fallback);
+        return fallback;
     }
 
     /**
@@ -359,5 +419,29 @@ export class OpenRouterClient {
         } catch {
             return String(details);
         }
+    }
+
+    private buildFriendlyModelName(modelId: string): string {
+        if (!modelId) {
+            return 'unknown';
+        }
+
+        const withoutNamespace = modelId.split('/').pop() || modelId;
+        const normalized = withoutNamespace.replace(/[_-]+/g, ' ').trim();
+        if (!normalized) {
+            return modelId;
+        }
+
+        const tokens = normalized
+            .split(' ')
+            .filter(Boolean)
+            .map(token => {
+                if (/^[0-9.]+$/.test(token)) {
+                    return token;
+                }
+                return token.charAt(0).toUpperCase() + token.slice(1);
+            });
+
+        return tokens.join(' ') || modelId;
     }
 }

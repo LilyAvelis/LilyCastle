@@ -1,0 +1,28 @@
+# ChatViewProvider.dao
+# 花园聊天的视觉层，管理Webview消息路由
+
+需 [OpenRouterClient, LedgerService, vscode.WebviewView]
+需量 3
+需质 high
+需时 <100ms
+
+供 chat-visual-layer
+供范 [message-routing, ui-update]
+
+禁 [不碰计费, 不写FS, 不直接调API]
+禁严 true
+
+态 stable
+
+元作 Lily
+元时 2025-11-29
+元注 "核心组件，处理所有聊天UI逻辑"
+元版 0.1.0
+
+测单元 [test-routing, test-ui]
+测集成 [test-with-ledger]
+测覆盖 85
+
+性响应 fast
+性内存 <50MB
+性并发 10

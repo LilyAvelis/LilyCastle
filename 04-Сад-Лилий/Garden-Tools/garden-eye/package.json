@@ -1,0 +1,43 @@
+{
+  "name": "garden-eye",
+  "displayName": "Garden Eye",
+  "description": "👁️ Умные глаза для LLM — skeleton & focus вместо слепого чтения",
+  "version": "0.0.1",
+  "publisher": "LilyAvelis",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "gardenEye.skeleton",
+        "title": "Garden Eye: Skeleton (показать структуру файла)"
+      },
+      {
+        "command": "gardenEye.focus",
+        "title": "Garden Eye: Focus (прочитать элемент по адресу)"
+      },
+      {
+        "command": "gardenEye.skeletonToClipboard",
+        "title": "Garden Eye: Skeleton → Clipboard"
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "dev": "npm run compile && echo y | npx vsce package && code --install-extension garden-eye-0.0.1.vsix --force"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.3.0"
+  }
+}

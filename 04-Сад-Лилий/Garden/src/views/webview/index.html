@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src ${cspSource} 'unsafe-inline'; script-src ${cspSource} 'unsafe-inline' https://cdn.jsdelivr.net; font-src ${cspSource};">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <title>Garden Chat</title>
+  <style>${styles}</style>
+</head>
+<body>
+  <div class="header">
+    <select class="session-selector" id="sessionSelector">
+      <option value="__new__">✨ Новый диалог...</option>
+    </select>
+    <button class="header-btn" id="editSessionBtn" title="Редактировать диалог">✏️</button>
+    <button class="header-btn" id="apiKeyBtn" title="API ключ">🔑</button>
+    <button class="header-btn" id="modelBtn" title="Выбор модели">🤖</button>
+  </div>
+
+  <div class="messages-container" id="messagesContainer">
+    <div class="empty-state" id="emptyState">
+      <div class="empty-state-emoji">🌸</div>
+      <p>Добро пожаловать в Garden!</p>
+      <p style="font-size: 11px; margin-top: 6px;">Начните новый диалог</p>
+    </div>
+  </div>
+
+  <div class="input-container">
+    <div class="input-wrapper">
+      <textarea id="messageInput" placeholder="Сообщение... (Shift+Enter для переноса)" rows="1"></textarea>
+      <button id="sendBtn">🌷</button>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="sessionModal">
+    <div class="modal">
+      <div class="modal-title">📝 Настройки диалога</div>
+      <div class="modal-field">
+        <div class="modal-label">Название</div>
+        <input type="text" class="modal-input" id="modalTitle" />
+      </div>
+      <div class="modal-field">
+        <div class="modal-label">Модель (OpenRouter)</div>
+        <div class="modal-info" id="modalModel">unknown</div>
+      </div>
+      <div class="modal-field">
+        <div class="modal-label">Псевдоним в чате</div>
+        <input type="text" class="modal-input" id="modalWho" placeholder="Имя модели" />
+      </div>
+      <div class="modal-actions">
+        <button class="modal-btn danger" id="modalDelete">🗑️</button>
+        <button class="modal-btn secondary" id="modalCancel">Отмена</button>
+        <button class="modal-btn primary" id="modalSave">💾</button>
+      </div>
+    </div>
+  </div>
+
+  <script>${script}</script>
+</body>
+</html>

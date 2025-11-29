@@ -4,6 +4,7 @@
   "description": "AI Chat Extension with OpenRouter API",
   "version": "0.0.1",
   "publisher": "lily-castle",
+  "icon": "resources/garden-logo.png",
   "engines": {
     "vscode": "^1.100.0"
   },
@@ -35,7 +36,7 @@
         {
           "id": "garden-sidebar",
           "title": "Garden",
-          "icon": "resources/garden-icon.svg"
+          "icon": "resources/garden-lab-icon.svg"
         }
       ]
     },
@@ -88,7 +89,9 @@
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "dev": "npm run compile && echo y|npx vsce package",
+    "lapki": "npm run dev && \"%LOCALAPPDATA%\\Programs\\Microsoft VS Code\\bin\\code.cmd\" --install-extension \"garden-%npm_package_version%.vsix\" --force"
   },
   "devDependencies": {
     "@types/node": "^20.11.0",

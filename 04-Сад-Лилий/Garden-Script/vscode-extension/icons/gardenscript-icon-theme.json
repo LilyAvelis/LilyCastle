@@ -1,0 +1,16 @@
+{
+  "iconDefinitions": {
+    "gardenscript-icon": {
+      "iconPath": "./gardenscript-icon.svg"
+    }
+  },
+  "fileExtensions": {
+    "gs": "gardenscript-icon"
+  },
+  "languageIds": {
+    "gardenscript": "gardenscript-icon"
+  },
+  "fileNames": {},
+  "folderNames": {},
+  "folderNamesExpanded": {}
+}

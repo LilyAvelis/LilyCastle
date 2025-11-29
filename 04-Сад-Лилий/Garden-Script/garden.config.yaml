@@ -1,0 +1,18 @@
+garden:
+  taxonomy:
+    - Bloom:
+        - Seed
+        - Root
+        - Soil
+    - Rose:
+        - Petal
+        - Stem
+        - Thorn
+        - Sepal
+    - Orchid
+    - Oak:
+        - Acorn
+        - Branch
+        - Leaf
+    - Fern
+    - Vine

@@ -1,0 +1,48 @@
+{
+  "name": "gardenscript-support",
+  "displayName": "GardenScript Support",
+  "description": "Language support for GardenScript (.gs) files with custom icon",
+  "version": "0.1.0",
+  "publisher": "LilyAvelis",
+  "repository": "https://github.com/LilyAvelis/LilyCastle",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "gardenscript",
+        "aliases": ["GardenScript", "gardenscript"],
+        "extensions": [".gs"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "gardenscript",
+        "scopeName": "source.gardenscript",
+        "path": "./syntaxes/gardenscript.tmLanguage.json"
+      }
+    ],
+    "iconThemes": [
+      {
+        "id": "gardenscript-icons",
+        "label": "GardenScript Icons",
+        "path": "./icons/gardenscript-icon-theme.json"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "echo 'No build needed'",
+    "compile": "echo 'No TypeScript to compile'"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.74.0",
+    "@types/node": "16.x",
+    "typescript": "^4.9.4"
+  }
+}
