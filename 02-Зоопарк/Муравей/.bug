@@ -1,0 +1,7 @@
+{
+  "name": "Муравей",
+  "original_room": "08-Спальня",
+  "language": "C++",
+  "description": "Division by zero в C++",
+  "emoji": "🐛"
+}

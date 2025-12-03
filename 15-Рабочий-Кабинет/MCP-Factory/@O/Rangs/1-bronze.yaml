@@ -1,0 +1,420 @@
+# MCP-Factory Model Rankings - Bronze
+# Дешевые модели (< $0.2/1M токенов) | Сортировка: по цене выхода токенов
+
+models:
+- id: openrouter/auto
+  name: Auto Router
+  price_in: -1000000.0
+  price_out: -1000000.0
+- id: meta-llama/llama-3.2-3b-instruct
+  name: 'Meta: Llama 3.2 3B Instruct'
+  price_in: 0.02
+  price_out: 0.02
+- id: meta-llama/llama-3.1-8b-instruct
+  name: 'Meta: Llama 3.1 8B Instruct'
+  price_in: 0.02
+  price_out: 0.03
+- id: google/gemma-3n-e4b-it
+  name: 'Google: Gemma 3n 4B'
+  price_in: 0.02
+  price_out: 0.04
+- id: mistralai/ministral-3b
+  name: 'Mistral: Ministral 3B'
+  price_in: 0.04
+  price_out: 0.04
+- id: mistralai/mistral-nemo
+  name: 'Mistral: Mistral Nemo'
+  price_in: 0.02
+  price_out: 0.04
+- id: meta-llama/llama-3.2-11b-vision-instruct
+  name: 'Meta: Llama 3.2 11B Vision Instruct'
+  price_in: 0.049
+  price_out: 0.049
+- id: sao10k/l3-lunaris-8b
+  name: 'Sao10K: Llama 3 8B Lunaris'
+  price_in: 0.04
+  price_out: 0.05
+- id: mistralai/mistral-7b-instruct
+  name: 'Mistral: Mistral 7B Instruct'
+  price_in: 0.028
+  price_out: 0.054
+- id: meta-llama/llama-guard-3-8b
+  name: Llama Guard 3 8B
+  price_in: 0.02
+  price_out: 0.06
+- id: meta-llama/llama-3-8b-instruct
+  name: 'Meta: Llama 3 8B Instruct'
+  price_in: 0.03
+  price_out: 0.06
+- id: gryphe/mythomax-l2-13b
+  name: MythoMax 13B
+  price_in: 0.06
+  price_out: 0.06
+- id: mistralai/mistral-small-24b-instruct-2501
+  name: 'Mistral: Mistral Small 3'
+  price_in: 0.05
+  price_out: 0.08
+- id: nousresearch/hermes-2-pro-llama-3-8b
+  name: 'NousResearch: Hermes 2 Pro - Llama-3 8B'
+  price_in: 0.025
+  price_out: 0.08
+- id: qwen/qwen2.5-coder-7b-instruct
+  name: 'Qwen: Qwen2.5 Coder 7B Instruct'
+  price_in: 0.03
+  price_out: 0.09
+- id: google/gemma-2-9b-it
+  name: 'Google: Gemma 2 9B'
+  price_in: 0.03
+  price_out: 0.09
+- id: liquid/lfm2-8b-a1b
+  name: LiquidAI/LFM2-8B-A1B
+  price_in: 0.05
+  price_out: 0.1
+- id: liquid/lfm-2.2-6b
+  name: LiquidAI/LFM2-2.6B
+  price_in: 0.05
+  price_out: 0.1
+- id: z-ai/glm-4-32b
+  name: 'Z.AI: GLM 4 32B '
+  price_in: 0.1
+  price_out: 0.1
+- id: deepseek/deepseek-r1-0528-qwen3-8b
+  name: 'DeepSeek: DeepSeek R1 0528 Qwen3 8B'
+  price_in: 0.02
+  price_out: 0.1
+- id: google/gemma-3-12b-it
+  name: 'Google: Gemma 3 12B'
+  price_in: 0.03
+  price_out: 0.1
+- id: microsoft/phi-3.5-mini-128k-instruct
+  name: 'Microsoft: Phi-3.5 Mini 128K Instruct'
+  price_in: 0.1
+  price_out: 0.1
+- id: mistralai/ministral-8b
+  name: 'Mistral: Ministral 8B'
+  price_in: 0.1
+  price_out: 0.1
+- id: qwen/qwen-2.5-7b-instruct
+  name: 'Qwen: Qwen2.5 7B Instruct'
+  price_in: 0.04
+  price_out: 0.1
+- id: mistralai/pixtral-12b
+  name: 'Mistral: Pixtral 12B'
+  price_in: 0.1
+  price_out: 0.1
+- id: microsoft/phi-3.5-mini-128k-instruct
+  name: 'Microsoft: Phi-3.5 Mini 128K Instruct'
+  price_in: 0.1
+  price_out: 0.1
+- id: microsoft/phi-3-mini-128k-instruct
+  name: 'Microsoft: Phi-3 Mini 128K Instruct'
+  price_in: 0.1
+  price_out: 0.1
+- id: ibm-granite/granite-4.0-h-micro
+  name: 'IBM: Granite 4.0 Micro'
+  price_in: 0.017
+  price_out: 0.11
+- id: mistralai/mistral-small-3.2-24b-instruct
+  name: 'Mistral: Mistral Small 3.2 24B'
+  price_in: 0.03
+  price_out: 0.11
+- id: arliai/qwq-32b-arliai-rpr-v1
+  name: 'ArliAI: QwQ 32B RpR v1'
+  price_in: 0.03
+  price_out: 0.11
+- id: mistralai/mistral-small-3.1-24b-instruct
+  name: 'Mistral: Mistral Small 3.1 24B'
+  price_in: 0.03
+  price_out: 0.11
+- id: qwen/qwen-2.5-coder-32b-instruct
+  name: Qwen2.5 Coder 32B Instruct
+  price_in: 0.03
+  price_out: 0.11
+- id: thudm/glm-4.1v-9b-thinking
+  name: 'THUDM: GLM 4.1V 9B Thinking'
+  price_in: 0.028
+  price_out: 0.1104
+- id: qwen/qwen3-8b
+  name: 'Qwen: Qwen3 8B'
+  price_in: 0.028
+  price_out: 0.1104
+- id: mistralai/devstral-small-2505
+  name: 'Mistral: Devstral Small 2505'
+  price_in: 0.06
+  price_out: 0.12
+- id: qwen/qwen2.5-vl-72b-instruct
+  name: 'Qwen: Qwen2.5 VL 72B Instruct'
+  price_in: 0.03
+  price_out: 0.13
+- id: deepseek/deepseek-r1-distill-llama-70b
+  name: 'DeepSeek: R1 Distill Llama 70B'
+  price_in: 0.03
+  price_out: 0.13
+- id: openai/gpt-oss-20b
+  name: 'OpenAI: gpt-oss-20b'
+  price_in: 0.03
+  price_out: 0.14
+- id: microsoft/phi-4
+  name: 'Microsoft: Phi 4'
+  price_in: 0.06
+  price_out: 0.14
+- id: amazon/nova-micro-v1
+  name: 'Amazon: Nova Micro 1.0'
+  price_in: 0.035
+  price_out: 0.14
+- id: arcee-ai/trinity-mini
+  name: 'Arcee AI: Trinity Mini'
+  price_in: 0.045
+  price_out: 0.15
+- id: cohere/command-r7b-12-2024
+  name: 'Cohere: Command R7B (12-2024)'
+  price_in: 0.0375
+  price_out: 0.15
+- id: nvidia/nemotron-nano-9b-v2
+  name: 'NVIDIA: Nemotron Nano 9B V2'
+  price_in: 0.04
+  price_out: 0.16
+- id: arcee-ai/spotlight
+  name: 'Arcee AI: Spotlight'
+  price_in: 0.18
+  price_out: 0.18
+- id: meta-llama/llama-guard-4-12b
+  name: 'Meta: LlamaGuard 4 12B'
+  price_in: 0.18
+  price_out: 0.18
+- id: mistralai/mistral-7b-instruct-v0.1
+  name: 'Mistral: Mistral 7B Instruct v0.1'
+  price_in: 0.11
+  price_out: 0.19
+- id: allenai/olmo-3-7b-instruct
+  name: 'AllenAI: Olmo 3 7B Instruct'
+  price_in: 0.1
+  price_out: 0.2
+- id: allenai/olmo-3-7b-think
+  name: 'AllenAI: Olmo 3 7B Think'
+  price_in: 0.12
+  price_out: 0.2
+- id: openai/gpt-oss-120b:exacto
+  name: 'OpenAI: gpt-oss-120b (exacto)'
+  price_in: 0.04
+  price_out: 0.2
+- id: openai/gpt-oss-120b
+  name: 'OpenAI: gpt-oss-120b'
+  price_in: 0.04
+  price_out: 0.2
+- id: bytedance/ui-tars-1.5-7b
+  name: 'ByteDance: UI-TARS 7B '
+  price_in: 0.1
+  price_out: 0.2
+- id: nousresearch/deephermes-3-mistral-24b-preview
+  name: 'NousResearch: DeepHermes 3 Mistral 24B Preview'
+  price_in: 0.05
+  price_out: 0.2
+- id: allenai/olmo-2-0325-32b-instruct
+  name: 'AllenAI: Olmo 2 32B Instruct'
+  price_in: 0.05
+  price_out: 0.2
+- id: qwen/qwen-turbo
+  name: 'Qwen: Qwen-Turbo'
+  price_in: 0.05
+  price_out: 0.2
+- id: meta-llama/llama-3.2-1b-instruct
+  name: 'Meta: Llama 3.2 1B Instruct'
+  price_in: 0.027
+  price_out: 0.2
+- id: qwen/qwen3-30b-a3b
+  name: 'Qwen: Qwen3 30B A3B'
+  price_in: 0.06
+  price_out: 0.22
+- id: qwen/qwen3-14b
+  name: 'Qwen: Qwen3 14B'
+  price_in: 0.05
+  price_out: 0.22
+- id: qwen/qwen2.5-vl-32b-instruct
+  name: 'Qwen: Qwen2.5 VL 32B Instruct'
+  price_in: 0.05
+  price_out: 0.22
+- id: baidu/ernie-4.5-21b-a3b-thinking
+  name: 'Baidu: ERNIE 4.5 21B A3B Thinking'
+  price_in: 0.056
+  price_out: 0.224
+- id: baidu/ernie-4.5-21b-a3b
+  name: 'Baidu: ERNIE 4.5 21B A3B'
+  price_in: 0.056
+  price_out: 0.224
+- id: qwen/qwen3-32b
+  name: 'Qwen: Qwen3 32B'
+  price_in: 0.08
+  price_out: 0.24
+- id: amazon/nova-lite-v1
+  name: 'Amazon: Nova Lite 1.0'
+  price_in: 0.06
+  price_out: 0.24
+- id: qwen/qwen3-coder-30b-a3b-instruct
+  name: 'Qwen: Qwen3 Coder 30B A3B Instruct'
+  price_in: 0.06
+  price_out: 0.25
+- id: opengvlab/internvl3-78b
+  name: 'OpenGVLab: InternVL3 78B'
+  price_in: 0.07
+  price_out: 0.26
+- id: qwen/qwen-2.5-72b-instruct
+  name: Qwen2.5 72B Instruct
+  price_in: 0.07
+  price_out: 0.26
+- id: mistralai/devstral-small
+  name: 'Mistral: Devstral Small 1.1'
+  price_in: 0.07
+  price_out: 0.28
+- id: mistralai/voxtral-small-24b-2507
+  name: 'Mistral: Voxtral Small 24B 2507'
+  price_in: 0.1
+  price_out: 0.3
+- id: openai/gpt-oss-safeguard-20b
+  name: 'OpenAI: gpt-oss-safeguard-20b'
+  price_in: 0.075
+  price_out: 0.3
+- id: meta-llama/llama-4-scout
+  name: 'Meta: Llama 4 Scout'
+  price_in: 0.08
+  price_out: 0.3
+- id: google/gemini-2.0-flash-lite-001
+  name: 'Google: Gemini 2.0 Flash Lite'
+  price_in: 0.075
+  price_out: 0.3
+- id: meta-llama/llama-3.3-70b-instruct
+  name: 'Meta: Llama 3.3 70B Instruct'
+  price_in: 0.104
+  price_out: 0.312
+- id: qwen/qwen3-30b-a3b-instruct-2507
+  name: 'Qwen: Qwen3 30B A3B Instruct 2507'
+  price_in: 0.08
+  price_out: 0.33
+- id: qwen/qwen3-30b-a3b-thinking-2507
+  name: 'Qwen: Qwen3 30B A3B Thinking 2507'
+  price_in: 0.051
+  price_out: 0.34
+- id: microsoft/phi-4-reasoning-plus
+  name: 'Microsoft: Phi 4 Reasoning Plus'
+  price_in: 0.07
+  price_out: 0.35
+- id: nousresearch/hermes-4-70b
+  name: 'Nous: Hermes 4 70B'
+  price_in: 0.11
+  price_out: 0.38
+- id: qwen/qwen3-vl-8b-instruct
+  name: 'Qwen: Qwen3 VL 8B Instruct'
+  price_in: 0.064
+  price_out: 0.4
+- id: nvidia/llama-3.3-nemotron-super-49b-v1.5
+  name: 'NVIDIA: Llama 3.3 Nemotron Super 49B V1.5'
+  price_in: 0.1
+  price_out: 0.4
+- id: google/gemini-2.5-flash-lite-preview-09-2025
+  name: 'Google: Gemini 2.5 Flash Lite Preview 09-2025'
+  price_in: 0.1
+  price_out: 0.4
+- id: alibaba/tongyi-deepresearch-30b-a3b
+  name: Tongyi DeepResearch 30B A3B
+  price_in: 0.09
+  price_out: 0.4
+- id: openai/gpt-5-nano
+  name: 'OpenAI: GPT-5 Nano'
+  price_in: 0.05
+  price_out: 0.4
+- id: google/gemini-2.5-flash-lite
+  name: 'Google: Gemini 2.5 Flash Lite'
+  price_in: 0.1
+  price_out: 0.4
+- id: openai/gpt-4.1-nano
+  name: 'OpenAI: GPT-4.1 Nano'
+  price_in: 0.1
+  price_out: 0.4
+- id: qwen/qwq-32b
+  name: 'Qwen: QwQ 32B'
+  price_in: 0.15
+  price_out: 0.4
+- id: google/gemini-2.0-flash-001
+  name: 'Google: Gemini 2.0 Flash'
+  price_in: 0.1
+  price_out: 0.4
+- id: thedrummer/rocinante-12b
+  name: 'TheDrummer: Rocinante 12B'
+  price_in: 0.17
+  price_out: 0.43
+- id: baidu/ernie-4.5-vl-28b-a3b
+  name: 'Baidu: ERNIE 4.5 VL 28B A3B'
+  price_in: 0.112
+  price_out: 0.448
+- id: qwen/qwen3-235b-a22b-2507
+  name: 'Qwen: Qwen3 235B A22B Instruct 2507'
+  price_in: 0.072
+  price_out: 0.464
+- id: google/gemma-3-27b-it
+  name: 'Google: Gemma 3 27B'
+  price_in: 0.07
+  price_out: 0.5
+- id: qwen/qwen3-235b-a22b
+  name: 'Qwen: Qwen3 235B A22B'
+  price_in: 0.18
+  price_out: 0.54
+- id: tencent/hunyuan-a13b-instruct
+  name: 'Tencent: Hunyuan A13B Instruct'
+  price_in: 0.14
+  price_out: 0.57
+- id: deepcogito/cogito-v2-preview-llama-109b-moe
+  name: Cogito V2 Preview Llama 109B
+  price_in: 0.18
+  price_out: 0.59
+- id: qwen/qwen3-vl-30b-a3b-instruct
+  name: 'Qwen: Qwen3 VL 30B A3B Instruct'
+  price_in: 0.15
+  price_out: 0.6
+- id: qwen/qwen3-235b-a22b-thinking-2507
+  name: 'Qwen: Qwen3 235B A22B Thinking 2507'
+  price_in: 0.11
+  price_out: 0.6
+- id: openai/gpt-4o-mini-search-preview
+  name: 'OpenAI: GPT-4o-mini Search Preview'
+  price_in: 0.15
+  price_out: 0.6
+- id: cohere/command-r-08-2024
+  name: 'Cohere: Command R (08-2024)'
+  price_in: 0.15
+  price_out: 0.6
+- id: openai/gpt-4o-mini-2024-07-18
+  name: 'OpenAI: GPT-4o-mini (2024-07-18)'
+  price_in: 0.15
+  price_out: 0.6
+- id: openai/gpt-4o-mini
+  name: 'OpenAI: GPT-4o-mini'
+  price_in: 0.15
+  price_out: 0.6
+- id: z-ai/glm-4.5-air
+  name: 'Z.AI: GLM 4.5 Air'
+  price_in: 0.104
+  price_out: 0.68
+- id: meta-llama/llama-4-maverick
+  name: 'Meta: Llama 4 Maverick'
+  price_in: 0.136
+  price_out: 0.68
+- id: meituan/longcat-flash-chat
+  name: 'Meituan: LongCat Flash Chat'
+  price_in: 0.15
+  price_out: 0.75
+- id: qwen/qwen3-vl-30b-a3b-thinking
+  name: 'Qwen: Qwen3 VL 30B A3B Thinking'
+  price_in: 0.16
+  price_out: 0.8
+- id: qwen/qwen3-next-80b-a3b-instruct
+  name: 'Qwen: Qwen3 Next 80B A3B Instruct'
+  price_in: 0.1
+  price_out: 0.8
+- id: qwen/qwen3-next-80b-a3b-thinking
+  name: 'Qwen: Qwen3 Next 80B A3B Thinking'
+  price_in: 0.12
+  price_out: 1.2
+- id: qwen/qwen3-vl-8b-thinking
+  name: 'Qwen: Qwen3 VL 8B Thinking'
+  price_in: 0.18
+  price_out: 2.1

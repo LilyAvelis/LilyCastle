@@ -29,10 +29,25 @@ export async function addCategory(categoryData: Omit<Category, 'id' | 'createdAt
   }
 }
 
-export async function updateCategory(id: string, data: Partial<Category>) {
+export async function updateCategory(id: string, data: Partial<Category>, imageFile?: File) {
   try {
+    let imageUrl = data.imageUrl;
+
+    // Если есть файл обложки, загружаем в Storage
+    if (imageFile) {
+      try {
+        imageUrl = await uploadCategoryImage(imageFile);
+      } catch (storageError) {
+        console.error('Storage upload error:', storageError);
+        throw new Error('Ошибка загрузки обложки. Убедитесь, что Firebase Storage включен.');
+      }
+    }
+
     const categoryRef = doc(db, 'categories', id);
-    await updateDoc(categoryRef, data);
+    const updateData: Partial<Category> = { ...data };
+    if (imageUrl !== undefined) updateData.imageUrl = imageUrl;
+    
+    await updateDoc(categoryRef, updateData);
   } catch (error) {
     console.error('Error updating category:', error);
     throw error;
@@ -176,10 +191,30 @@ export async function deleteProduct(id: string) {
   }
 }
 
+export async function reorderProducts(products: Product[]) {
+  try {
+    const batch = writeBatch(db);
+    products.forEach((product, index) => {
+      const ref = doc(db, 'products', product.id);
+      batch.update(ref, { order: index });
+    });
+    await batch.commit();
+  } catch (error) {
+    console.error('Error reordering products:', error);
+    throw error;
+  }
+}
+
 // --- Helpers ---
 
 async function uploadImage(file: File): Promise<string> {
   const storageRef = ref(storage, `products/${Date.now()}_${file.name}`);
+  const snapshot = await uploadBytes(storageRef, file);
+  return getDownloadURL(snapshot.ref);
+}
+
+async function uploadCategoryImage(file: File): Promise<string> {
+  const storageRef = ref(storage, `categories/${Date.now()}_${file.name}`);
   const snapshot = await uploadBytes(storageRef, file);
   return getDownloadURL(snapshot.ref);
 }

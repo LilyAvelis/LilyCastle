@@ -1,0 +1,7 @@
+{
+  "name": "Оса",
+  "original_room": "13-Тайная-Комната",
+  "language": "Haskell",
+  "description": "Division by zero в Haskell",
+  "emoji": "🐛"
+}

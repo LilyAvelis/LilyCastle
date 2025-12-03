@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #0f172a;
+  color: #e2e8f0;
+}
+
+.bug-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+}
+
+.bug-cell {
+  @apply border-2 border-slate-600 rounded-lg p-4 bg-slate-800 min-h-32 flex flex-col justify-center items-center hover:scale-105 transition-transform shadow-lg;
+}
+
+.bug-cell:hover {
+  @apply border-slate-400 shadow-xl;
+}
+
+.room-name {
+  @apply font-bold text-sm text-slate-200 mb-2;
+}
+
+.bug-icons {
+  @apply text-3xl min-h-10 flex flex-wrap justify-center gap-1;
+}
+
+.bug-name {
+  @apply text-xs text-slate-300 mt-2 italic;
+}
+
+.empty {
+  @apply text-slate-500;
+}

@@ -18,9 +18,18 @@ export default function GalleryCard({ category }: GalleryCardProps) {
         {/* Область с картинкой */}
         <div className="relative h-64 w-full overflow-hidden bg-gradient-to-br from-rose-400 via-pink-300 to-orange-300">
           
-          {/* Слой 1: Плейсхолдер (Эмодзи) */}
+          {/* Слой 1: Приоритет обложки, эмодзи только если нет обложки */}
           <div className="absolute inset-0 flex items-center justify-center transition-all duration-700 ease-in-out group-hover:opacity-0 group-hover:scale-110 group-hover:blur-md">
-            <div className="text-8xl select-none">{category.emoji}</div>
+            {category.imageUrl ? (
+              <Image
+                src={category.imageUrl}
+                alt={category.name}
+                fill
+                className="object-cover"
+              />
+            ) : (
+              <div className="text-8xl select-none">{category.emoji}</div>
+            )}
           </div>
 
           {/* Слой 2: Карусель (Появляется при наведении) */}

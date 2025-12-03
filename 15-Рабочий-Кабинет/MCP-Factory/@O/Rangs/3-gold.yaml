@@ -1,0 +1,300 @@
+# MCP-Factory Model Rankings - Gold
+# Хорошие модели ($1.0-5.0/1M токенов) | Сортировка: по цене выхода токенов
+
+models:
+- id: perplexity/sonar
+  name: 'Perplexity: Sonar'
+  price_in: 1.0
+  price_out: 1.0
+- id: nousresearch/hermes-3-llama-3.1-405b
+  name: 'Nous: Hermes 3 405B Instruct'
+  price_in: 1.0
+  price_out: 1.0
+- id: microsoft/phi-3-medium-128k-instruct
+  name: 'Microsoft: Phi-3 Medium 128K Instruct'
+  price_in: 1.0
+  price_out: 1.0
+- id: mancer/weaver
+  name: 'Mancer: Weaver (alpha)'
+  price_in: 1.125
+  price_out: 1.125
+- id: nvidia/llama-3.1-nemotron-70b-instruct
+  name: 'NVIDIA: Llama 3.1 Nemotron 70B Instruct'
+  price_in: 1.2
+  price_out: 1.2
+- id: deepcogito/cogito-v2.1-671b
+  name: 'Deep Cogito: Cogito v2.1 671B'
+  price_in: 1.25
+  price_out: 1.25
+- id: deepcogito/cogito-v2-preview-deepseek-671b
+  name: 'Deep Cogito: Cogito V2 Preview Deepseek 671B'
+  price_in: 1.25
+  price_out: 1.25
+- id: sao10k/l3-euryale-70b
+  name: 'Sao10k: Llama 3 Euryale 70B v2.1'
+  price_in: 1.48
+  price_out: 1.48
+- id: neversleep/noromaid-20b
+  name: Noromaid 20B
+  price_in: 1.0
+  price_out: 1.75
+- id: neversleep/noromaid-20b
+  name: Noromaid 20B
+  price_in: 1.0
+  price_out: 1.75
+- id: openai/gpt-5-image-mini
+  name: 'OpenAI: GPT-5 Image Mini'
+  price_in: 2.5
+  price_out: 2.0
+- id: openai/gpt-3.5-turbo-0613
+  name: 'OpenAI: GPT-3.5 Turbo (older v0613)'
+  price_in: 1.0
+  price_out: 2.0
+- id: openai/gpt-3.5-turbo-instruct
+  name: 'OpenAI: GPT-3.5 Turbo Instruct'
+  price_in: 1.5
+  price_out: 2.0
+- id: sao10k/l3.1-70b-hanami-x1
+  name: 'Sao10K: Llama 3.1 70B Hanami x1'
+  price_in: 3.0
+  price_out: 3.0
+- id: deepcogito/cogito-v2-preview-llama-405b
+  name: 'Deep Cogito: Cogito V2 Preview Llama 405B'
+  price_in: 3.5
+  price_out: 3.5
+- id: meta-llama/llama-3.1-405b-instruct
+  name: 'Meta: Llama 3.1 405B Instruct'
+  price_in: 3.5
+  price_out: 3.5
+- id: meta-llama/llama-3.1-405b
+  name: 'Meta: Llama 3.1 405B (base)'
+  price_in: 4.0
+  price_out: 4.0
+- id: openai/gpt-3.5-turbo-16k
+  name: 'OpenAI: GPT-3.5 Turbo 16k'
+  price_in: 3.0
+  price_out: 4.0
+- id: openai/o4-mini-high
+  name: 'OpenAI: o4 Mini High'
+  price_in: 1.1
+  price_out: 4.4
+- id: openai/o4-mini
+  name: 'OpenAI: o4 Mini'
+  price_in: 1.1
+  price_out: 4.4
+- id: openai/o3-mini-high
+  name: 'OpenAI: o3 Mini High'
+  price_in: 1.1
+  price_out: 4.4
+- id: openai/o3-mini
+  name: 'OpenAI: o3 Mini'
+  price_in: 1.1
+  price_out: 4.4
+- id: raifle/sorcererlm-8x22b
+  name: SorcererLM 8x22B
+  price_in: 4.5
+  price_out: 4.5
+- id: anthropic/claude-haiku-4.5
+  name: 'Anthropic: Claude Haiku 4.5'
+  price_in: 1.0
+  price_out: 5.0
+- id: qwen/qwen3-coder-plus
+  name: 'Qwen: Qwen3 Coder Plus'
+  price_in: 1.0
+  price_out: 5.0
+- id: mistralai/magistral-medium-2506:thinking
+  name: 'Mistral: Magistral Medium 2506 (thinking)'
+  price_in: 2.0
+  price_out: 5.0
+- id: mistralai/magistral-medium-2506
+  name: 'Mistral: Magistral Medium 2506'
+  price_in: 2.0
+  price_out: 5.0
+- id: perplexity/sonar-reasoning
+  name: 'Perplexity: Sonar Reasoning'
+  price_in: 1.0
+  price_out: 5.0
+- id: anthracite-org/magnum-v4-72b
+  name: Magnum v4 72B
+  price_in: 3.0
+  price_out: 5.0
+- id: qwen/qwen3-max
+  name: 'Qwen: Qwen3 Max'
+  price_in: 1.2
+  price_out: 6.0
+- id: openai/codex-mini
+  name: 'OpenAI: Codex Mini'
+  price_in: 1.5
+  price_out: 6.0
+- id: mistralai/mistral-large-2411
+  name: Mistral Large 2411
+  price_in: 2.0
+  price_out: 6.0
+- id: mistralai/mistral-large-2407
+  name: Mistral Large 2407
+  price_in: 2.0
+  price_out: 6.0
+- id: mistralai/pixtral-large-2411
+  name: 'Mistral: Pixtral Large 2411'
+  price_in: 2.0
+  price_out: 6.0
+- id: mistralai/mixtral-8x22b-instruct
+  name: 'Mistral: Mixtral 8x22B Instruct'
+  price_in: 2.0
+  price_out: 6.0
+- id: mistralai/mistral-large
+  name: Mistral Large
+  price_in: 2.0
+  price_out: 6.0
+- id: qwen/qwen-max
+  name: 'Qwen: Qwen-Max '
+  price_in: 1.6
+  price_out: 6.4
+- id: openai/o4-mini-deep-research
+  name: 'OpenAI: o4 Mini Deep Research'
+  price_in: 2.0
+  price_out: 8.0
+- id: ai21/jamba-large-1.7
+  name: 'AI21: Jamba Large 1.7'
+  price_in: 2.0
+  price_out: 8.0
+- id: openai/o3
+  name: 'OpenAI: o3'
+  price_in: 2.0
+  price_out: 8.0
+- id: openai/gpt-4.1
+  name: 'OpenAI: GPT-4.1'
+  price_in: 2.0
+  price_out: 8.0
+- id: perplexity/sonar-reasoning-pro
+  name: 'Perplexity: Sonar Reasoning Pro'
+  price_in: 2.0
+  price_out: 8.0
+- id: perplexity/sonar-deep-research
+  name: 'Perplexity: Sonar Deep Research'
+  price_in: 2.0
+  price_out: 8.0
+- id: aion-labs/aion-1.0
+  name: 'AionLabs: Aion-1.0'
+  price_in: 4.0
+  price_out: 8.0
+- id: openai/gpt-5.1
+  name: 'OpenAI: GPT-5.1'
+  price_in: 1.25
+  price_out: 10.0
+- id: openai/gpt-5.1-chat
+  name: 'OpenAI: GPT-5.1 Chat'
+  price_in: 1.25
+  price_out: 10.0
+- id: openai/gpt-5.1-codex
+  name: 'OpenAI: GPT-5.1-Codex'
+  price_in: 1.25
+  price_out: 10.0
+- id: openai/gpt-5-codex
+  name: 'OpenAI: GPT-5 Codex'
+  price_in: 1.25
+  price_out: 10.0
+- id: openai/gpt-4o-audio-preview
+  name: 'OpenAI: GPT-4o Audio'
+  price_in: 2.5
+  price_out: 10.0
+- id: openai/gpt-5-chat
+  name: 'OpenAI: GPT-5 Chat'
+  price_in: 1.25
+  price_out: 10.0
+- id: openai/gpt-5
+  name: 'OpenAI: GPT-5'
+  price_in: 1.25
+  price_out: 10.0
+- id: google/gemini-2.5-pro
+  name: 'Google: Gemini 2.5 Pro'
+  price_in: 1.25
+  price_out: 10.0
+- id: google/gemini-2.5-pro-preview
+  name: 'Google: Gemini 2.5 Pro Preview 06-05'
+  price_in: 1.25
+  price_out: 10.0
+- id: google/gemini-2.5-pro-preview-05-06
+  name: 'Google: Gemini 2.5 Pro Preview 05-06'
+  price_in: 1.25
+  price_out: 10.0
+- id: cohere/command-a
+  name: 'Cohere: Command A'
+  price_in: 2.5
+  price_out: 10.0
+- id: openai/gpt-4o-search-preview
+  name: 'OpenAI: GPT-4o Search Preview'
+  price_in: 2.5
+  price_out: 10.0
+- id: openai/gpt-4o-2024-11-20
+  name: 'OpenAI: GPT-4o (2024-11-20)'
+  price_in: 2.5
+  price_out: 10.0
+- id: inflection/inflection-3-pi
+  name: 'Inflection: Inflection 3 Pi'
+  price_in: 2.5
+  price_out: 10.0
+- id: inflection/inflection-3-productivity
+  name: 'Inflection: Inflection 3 Productivity'
+  price_in: 2.5
+  price_out: 10.0
+- id: cohere/command-r-plus-08-2024
+  name: 'Cohere: Command R+ (08-2024)'
+  price_in: 2.5
+  price_out: 10.0
+- id: openai/gpt-4o-2024-08-06
+  name: 'OpenAI: GPT-4o (2024-08-06)'
+  price_in: 2.5
+  price_out: 10.0
+- id: openai/gpt-4o
+  name: 'OpenAI: GPT-4o'
+  price_in: 2.5
+  price_out: 10.0
+- id: google/gemini-3-pro-image-preview
+  name: 'Google: Nano Banana Pro (Gemini 3 Pro Image Preview)'
+  price_in: 2.0
+  price_out: 12.0
+- id: google/gemini-3-pro-preview
+  name: 'Google: Gemini 3 Pro Preview'
+  price_in: 2.0
+  price_out: 12.0
+- id: amazon/nova-premier-v1
+  name: 'Amazon: Nova Premier 1.0'
+  price_in: 2.5
+  price_out: 12.5
+- id: perplexity/sonar-pro-search
+  name: 'Perplexity: Sonar Pro Search'
+  price_in: 3.0
+  price_out: 15.0
+- id: anthropic/claude-sonnet-4.5
+  name: 'Anthropic: Claude Sonnet 4.5'
+  price_in: 3.0
+  price_out: 15.0
+- id: x-ai/grok-4
+  name: 'xAI: Grok 4'
+  price_in: 3.0
+  price_out: 15.0
+- id: x-ai/grok-3
+  name: 'xAI: Grok 3'
+  price_in: 3.0
+  price_out: 15.0
+- id: anthropic/claude-sonnet-4
+  name: 'Anthropic: Claude Sonnet 4'
+  price_in: 3.0
+  price_out: 15.0
+- id: x-ai/grok-3-beta
+  name: 'xAI: Grok 3 Beta'
+  price_in: 3.0
+  price_out: 15.0
+- id: perplexity/sonar-pro
+  name: 'Perplexity: Sonar Pro'
+  price_in: 3.0
+  price_out: 15.0
+- id: anthropic/claude-3.7-sonnet:thinking
+  name: 'Anthropic: Claude 3.7 Sonnet (thinking)'
+  price_in: 3.0
+  price_out: 15.0
+- id: anthropic/claude-3.7-sonnet
+  name: 'Anthropic: Claude 3.7 Sonnet'
+  price_in: 3.0
+  price_out: 15.0

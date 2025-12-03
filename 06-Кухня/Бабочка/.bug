@@ -1,0 +1,7 @@
+{
+  "name": "Бабочка",
+  "original_room": "08-Спальня",
+  "language": "Kotlin",
+  "description": "Division by zero в Kotlin",
+  "emoji": "🐛"
+}

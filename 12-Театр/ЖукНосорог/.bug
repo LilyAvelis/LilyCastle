@@ -1,0 +1,7 @@
+{
+  "name": "ЖукНосорог",
+  "original_room": "10-Гостинная",
+  "language": "Rust",
+  "description": "Index out of bounds в Rust",
+  "emoji": "🐛"
+}

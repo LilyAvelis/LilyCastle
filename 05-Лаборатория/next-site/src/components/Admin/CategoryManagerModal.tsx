@@ -1,10 +1,11 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Category } from '@/types';
 import { 
   addCategory, 
   deleteCategory, 
+  updateCategory,
   reorderCategories, 
   getUndefinedProductsCount, 
   clearUndefinedProducts 
@@ -26,6 +27,7 @@ import {
   useSortable
 } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
+import Image from 'next/image';
 
 interface CategoryManagerModalProps {
   isOpen: boolean;
@@ -34,7 +36,15 @@ interface CategoryManagerModalProps {
 }
 
 // Компонент сортируемого элемента
-function SortableItem({ category, onDelete }: { category: Category; onDelete: (id: string, name: string) => void }) {
+function SortableItem({ 
+  category, 
+  onDelete,
+  onEdit 
+}: { 
+  category: Category; 
+  onDelete: (id: string, name: string) => void;
+  onEdit: (category: Category) => void;
+}) {
   const {
     attributes,
     listeners,
@@ -66,14 +76,33 @@ function SortableItem({ category, onDelete }: { category: Category; onDelete: (i
         ⠿
       </div>
       
-      <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-white rounded-lg text-xl md:text-2xl border border-stone-100 select-none flex-shrink-0">
-        {category.emoji}
+      {/* Обложка или эмодзи */}
+      <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-white rounded-lg text-xl md:text-2xl border border-stone-100 select-none flex-shrink-0 overflow-hidden relative">
+        {category.imageUrl ? (
+          <Image
+            src={category.imageUrl}
+            alt={category.name}
+            fill
+            className="object-cover"
+          />
+        ) : (
+          category.emoji
+        )}
       </div>
       
       <div className="flex-grow select-none min-w-0">
         <h3 className="font-bold text-black truncate">{category.name}</h3>
         <p className="text-xs text-stone-500 truncate">{category.description}</p>
       </div>
+      
+      {/* Кнопка редактирования */}
+      <button 
+        onClick={() => onEdit(category)}
+        className="p-2 text-stone-400 hover:text-blue-500 transition flex-shrink-0"
+        title="Редактировать"
+      >
+        ✏️
+      </button>
       
       <button 
         onClick={() => onDelete(category.id, category.name)}
@@ -90,8 +119,12 @@ export default function CategoryManagerModal({ isOpen, onClose, categories: init
   const [categories, setCategories] = useState<Category[]>(initialCategories);
   const [undefinedCount, setUndefinedCount] = useState(0);
   const [isAdding, setIsAdding] = useState(false);
+  const [editingCategory, setEditingCategory] = useState<Category | null>(null);
   const [newCategory, setNewCategory] = useState({ name: '', emoji: '', description: '' });
   const [loading, setLoading] = useState(false);
+  const [editImageFile, setEditImageFile] = useState<File | null>(null);
+  const [editImagePreview, setEditImagePreview] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const sensors = useSensors(
     useSensor(PointerSensor, {
@@ -187,6 +220,53 @@ export default function CategoryManagerModal({ isOpen, onClose, categories: init
     }
   };
 
+  const handleEdit = (category: Category) => {
+    setEditingCategory(category);
+    setIsAdding(false);
+    setEditImageFile(null);
+    setEditImagePreview(category.imageUrl || null);
+  };
+
+  const handleImageSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setEditImageFile(file);
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        setEditImagePreview(event.target?.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleRemoveImage = () => {
+    setEditImageFile(null);
+    setEditImagePreview(null);
+    if (editingCategory) {
+      setEditingCategory({ ...editingCategory, imageUrl: undefined });
+    }
+  };
+
+  const handleSaveEdit = async () => {
+    if (!editingCategory || !editingCategory.name || !editingCategory.emoji) return;
+    setLoading(true);
+    try {
+      await updateCategory(editingCategory.id, {
+        name: editingCategory.name,
+        emoji: editingCategory.emoji,
+        description: editingCategory.description,
+        imageUrl: editImagePreview === null ? '' : editingCategory.imageUrl,
+      }, editImageFile || undefined);
+      setEditingCategory(null);
+      setEditImageFile(null);
+      setEditImagePreview(null);
+    } catch (error) {
+      alert('Ошибка: ' + (error as Error).message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const handleClearUndefined = async () => {
     if (!confirm(`Удалить навсегда ${undefinedCount} товаров из "Неопределенных"?`)) return;
     setLoading(true);
@@ -233,7 +313,8 @@ export default function CategoryManagerModal({ isOpen, onClose, categories: init
                   <SortableItem 
                     key={cat.id} 
                     category={cat} 
-                    onDelete={handleDelete} 
+                    onDelete={handleDelete}
+                    onEdit={handleEdit}
                   />
                 ))}
               </SortableContext>
@@ -279,6 +360,86 @@ export default function CategoryManagerModal({ isOpen, onClose, categories: init
                 <div className="flex flex-col-reverse md:flex-row gap-2">
                   <button onClick={() => setIsAdding(false)} className="flex-1 py-3 md:py-2 bg-white text-stone-500 rounded-lg border border-stone-200 hover:bg-stone-50">Отмена</button>
                   <button onClick={handleAdd} className="flex-1 py-3 md:py-2 bg-rose-500 text-white rounded-lg font-bold hover:bg-rose-600">Создать</button>
+                </div>
+              </div>
+            </div>
+          ) : editingCategory ? (
+            <div className="bg-blue-50 p-4 rounded-xl border border-blue-100 animate-in fade-in slide-in-from-bottom-2">
+              <h3 className="font-bold text-blue-700 mb-3">✏️ Редактирование категории</h3>
+              <div className="space-y-3">
+                {/* Загрузка обложки */}
+                <div className="flex items-center gap-4">
+                  <div 
+                    onClick={() => fileInputRef.current?.click()}
+                    className="w-20 h-20 rounded-xl border-2 border-dashed border-blue-300 flex items-center justify-center cursor-pointer hover:border-blue-500 transition overflow-hidden relative bg-white"
+                  >
+                    {editImagePreview ? (
+                      <Image
+                        src={editImagePreview}
+                        alt="Обложка"
+                        fill
+                        className="object-cover"
+                      />
+                    ) : (
+                      <span className="text-3xl text-blue-300">📷</span>
+                    )}
+                  </div>
+                  <div className="flex-grow">
+                    <p className="text-sm text-blue-700 font-medium mb-1">Обложка категории</p>
+                    <p className="text-xs text-blue-500 mb-2">Необязательно. Если нет — будет эмодзи</p>
+                    <div className="flex gap-2">
+                      <button
+                        type="button"
+                        onClick={() => fileInputRef.current?.click()}
+                        className="text-xs px-3 py-1 bg-blue-200 text-blue-700 rounded-lg hover:bg-blue-300"
+                      >
+                        {editImagePreview ? 'Заменить' : 'Загрузить'}
+                      </button>
+                      {editImagePreview && (
+                        <button
+                          type="button"
+                          onClick={handleRemoveImage}
+                          className="text-xs px-3 py-1 bg-red-100 text-red-600 rounded-lg hover:bg-red-200"
+                        >
+                          Удалить
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageSelect}
+                    className="hidden"
+                  />
+                </div>
+
+                <div className="flex gap-3">
+                  <input 
+                    placeholder="Эмодзи (🍓)" 
+                    className="w-20 p-2 rounded-lg border border-blue-200 outline-none focus:ring-2 focus:ring-blue-400 text-center text-2xl"
+                    value={editingCategory.emoji}
+                    onChange={e => setEditingCategory({...editingCategory, emoji: e.target.value})}
+                  />
+                  <input 
+                    placeholder="Название" 
+                    className="flex-grow p-2 rounded-lg border border-blue-200 outline-none focus:ring-2 focus:ring-blue-400 font-bold text-black"
+                    value={editingCategory.name}
+                    onChange={e => setEditingCategory({...editingCategory, name: e.target.value})}
+                  />
+                </div>
+                <input 
+                  placeholder="Описание" 
+                  className="w-full p-2 rounded-lg border border-blue-200 outline-none focus:ring-2 focus:ring-blue-400 text-sm text-black"
+                  value={editingCategory.description}
+                  onChange={e => setEditingCategory({...editingCategory, description: e.target.value})}
+                />
+                <div className="flex flex-col-reverse md:flex-row gap-2">
+                  <button onClick={() => { setEditingCategory(null); setEditImageFile(null); setEditImagePreview(null); }} className="flex-1 py-3 md:py-2 bg-white text-stone-500 rounded-lg border border-stone-200 hover:bg-stone-50">Отмена</button>
+                  <button onClick={handleSaveEdit} disabled={loading} className="flex-1 py-3 md:py-2 bg-blue-500 text-white rounded-lg font-bold hover:bg-blue-600 disabled:opacity-50">
+                    {loading ? 'Сохраняем...' : 'Сохранить'}
+                  </button>
                 </div>
               </div>
             </div>

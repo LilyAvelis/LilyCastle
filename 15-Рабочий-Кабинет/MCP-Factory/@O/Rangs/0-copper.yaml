@@ -1,0 +1,124 @@
+# MCP-Factory Model Rankings - Copper
+# Бесплатные модели (FREE) | Сортировка: по цене выхода токенов
+
+models:
+- id: amazon/nova-2-lite-v1:free
+  name: 'Amazon: Nova 2 Lite (free)'
+  price_in: 0.0
+  price_out: 0.0
+- id: arcee-ai/trinity-mini:free
+  name: 'Arcee AI: Trinity Mini (free)'
+  price_in: 0.0
+  price_out: 0.0
+- id: tngtech/tng-r1t-chimera:free
+  name: 'TNG: R1T Chimera (free)'
+  price_in: 0.0
+  price_out: 0.0
+- id: allenai/olmo-3-32b-think:free
+  name: 'AllenAI: Olmo 3 32B Think (free)'
+  price_in: 0.0
+  price_out: 0.0
+- id: x-ai/grok-4.1-fast:free
+  name: 'xAI: Grok 4.1 Fast (free)'
+  price_in: 0.0
+  price_out: 0.0
+- id: kwaipilot/kat-coder-pro:free
+  name: 'Kwaipilot: KAT-Coder-Pro V1 (free)'
+  price_in: 0.0
+  price_out: 0.0
+- id: nvidia/nemotron-nano-12b-v2-vl:free
+  name: 'NVIDIA: Nemotron Nano 12B 2 VL (free)'
+  price_in: 0.0
+  price_out: 0.0
+- id: alibaba/tongyi-deepresearch-30b-a3b:free
+  name: Tongyi DeepResearch 30B A3B (free)
+  price_in: 0.0
+  price_out: 0.0
+- id: meituan/longcat-flash-chat:free
+  name: 'Meituan: LongCat Flash Chat (free)'
+  price_in: 0.0
+  price_out: 0.0
+- id: nvidia/nemotron-nano-9b-v2:free
+  name: 'NVIDIA: Nemotron Nano 9B V2 (free)'
+  price_in: 0.0
+  price_out: 0.0
+- id: openai/gpt-oss-20b:free
+  name: 'OpenAI: gpt-oss-20b (free)'
+  price_in: 0.0
+  price_out: 0.0
+- id: z-ai/glm-4.5-air:free
+  name: 'Z.AI: GLM 4.5 Air (free)'
+  price_in: 0.0
+  price_out: 0.0
+- id: qwen/qwen3-coder:free
+  name: 'Qwen: Qwen3 Coder 480B A35B (free)'
+  price_in: 0.0
+  price_out: 0.0
+- id: moonshotai/kimi-k2:free
+  name: 'MoonshotAI: Kimi K2 0711 (free)'
+  price_in: 0.0
+  price_out: 0.0
+- id: cognitivecomputations/dolphin-mistral-24b-venice-edition:free
+  name: 'Venice: Uncensored (free)'
+  price_in: 0.0
+  price_out: 0.0
+- id: google/gemma-3n-e2b-it:free
+  name: 'Google: Gemma 3n 2B (free)'
+  price_in: 0.0
+  price_out: 0.0
+- id: tngtech/deepseek-r1t2-chimera:free
+  name: 'TNG: DeepSeek R1T2 Chimera (free)'
+  price_in: 0.0
+  price_out: 0.0
+- id: google/gemma-3n-e4b-it:free
+  name: 'Google: Gemma 3n 4B (free)'
+  price_in: 0.0
+  price_out: 0.0
+- id: qwen/qwen3-4b:free
+  name: 'Qwen: Qwen3 4B (free)'
+  price_in: 0.0
+  price_out: 0.0
+- id: qwen/qwen3-235b-a22b:free
+  name: 'Qwen: Qwen3 235B A22B (free)'
+  price_in: 0.0
+  price_out: 0.0
+- id: tngtech/deepseek-r1t-chimera:free
+  name: 'TNG: DeepSeek R1T Chimera (free)'
+  price_in: 0.0
+  price_out: 0.0
+- id: mistralai/mistral-small-3.1-24b-instruct:free
+  name: 'Mistral: Mistral Small 3.1 24B (free)'
+  price_in: 0.0
+  price_out: 0.0
+- id: google/gemma-3-4b-it:free
+  name: 'Google: Gemma 3 4B (free)'
+  price_in: 0.0
+  price_out: 0.0
+- id: google/gemma-3-12b-it:free
+  name: 'Google: Gemma 3 12B (free)'
+  price_in: 0.0
+  price_out: 0.0
+- id: google/gemma-3-27b-it:free
+  name: 'Google: Gemma 3 27B (free)'
+  price_in: 0.0
+  price_out: 0.0
+- id: google/gemini-2.0-flash-exp:free
+  name: 'Google: Gemini 2.0 Flash Experimental (free)'
+  price_in: 0.0
+  price_out: 0.0
+- id: meta-llama/llama-3.3-70b-instruct:free
+  name: 'Meta: Llama 3.3 70B Instruct (free)'
+  price_in: 0.0
+  price_out: 0.0
+- id: meta-llama/llama-3.2-3b-instruct:free
+  name: 'Meta: Llama 3.2 3B Instruct (free)'
+  price_in: 0.0
+  price_out: 0.0
+- id: nousresearch/hermes-3-llama-3.1-405b:free
+  name: 'Nous: Hermes 3 405B Instruct (free)'
+  price_in: 0.0
+  price_out: 0.0
+- id: mistralai/mistral-7b-instruct:free
+  name: 'Mistral: Mistral 7B Instruct (free)'
+  price_in: 0.0
+  price_out: 0.0

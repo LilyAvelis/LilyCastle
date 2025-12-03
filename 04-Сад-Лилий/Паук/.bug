@@ -1,0 +1,7 @@
+{
+  "name": "Паук",
+  "original_room": "02-Зоопарк",
+  "language": "C#",
+  "description": "NullReferenceException в C#",
+  "emoji": "🐛"
+}

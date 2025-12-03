@@ -2,6 +2,7 @@
 
 import { Product } from '@/types';
 import { useEffect } from 'react';
+import { useCart } from '@/context/CartContext';
 import Image from 'next/image';
 
 interface ProductModalProps {
@@ -10,6 +11,8 @@ interface ProductModalProps {
 }
 
 export default function ProductModal({ product, onClose }: ProductModalProps) {
+  const { addToCart } = useCart();
+
   // Блокируем скролл фона при открытом модальном окне
   useEffect(() => {
     if (product) {
@@ -30,6 +33,13 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
     window.addEventListener('keydown', handleEsc);
     return () => window.removeEventListener('keydown', handleEsc);
   }, [onClose]);
+
+  const handleAddToCart = () => {
+    if (product) {
+      addToCart(product);
+      onClose();
+    }
+  };
 
   if (!product) return null;
 
@@ -78,16 +88,19 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
 
           <div className="mt-auto">
             <div className="flex items-center justify-between mb-6">
-              <span className={`text-sm font-bold ${product.inStock ? 'text-green-600' : 'text-orange-500'}`}>
-                {product.inStock ? 'В наличии' : 'Под заказ'}
-              </span>
               <span className="text-3xl font-bold text-rose-600">
                 {product.price} ₽
               </span>
             </div>
 
-            <button className="w-full bg-rose-400 text-white py-4 rounded-xl font-bold text-lg hover:bg-rose-500 transition shadow-lg shadow-rose-200">
-              Хочу такой букет!
+            <button 
+              onClick={handleAddToCart}
+              className="w-full bg-rose-400 text-white py-4 rounded-xl font-bold text-lg hover:bg-rose-500 transition shadow-lg shadow-rose-200 flex items-center justify-center gap-2"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+              В корзину
             </button>
           </div>
         </div>

@@ -1,0 +1,7 @@
+{
+  "name": "Таракан",
+  "original_room": "07-Галерея",
+  "language": "Java",
+  "description": "NullPointerException в Java",
+  "emoji": "🐛"
+}

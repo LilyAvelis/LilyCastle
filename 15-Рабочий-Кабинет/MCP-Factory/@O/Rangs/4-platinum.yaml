@@ -1,0 +1,84 @@
+# MCP-Factory Model Rankings - Platinum
+# Премиум модели ($5.0+/1M токенов) | Сортировка: по цене выхода токенов
+
+models:
+- id: alpindale/goliath-120b
+  name: Goliath 120B
+  price_in: 6.0
+  price_out: 8.0
+- id: openai/gpt-5-image
+  name: 'OpenAI: GPT-5 Image'
+  price_in: 10.0
+  price_out: 10.0
+- id: openai/chatgpt-4o-latest
+  name: 'OpenAI: ChatGPT-4o'
+  price_in: 5.0
+  price_out: 15.0
+- id: openai/gpt-4o-2024-05-13
+  name: 'OpenAI: GPT-4o (2024-05-13)'
+  price_in: 5.0
+  price_out: 15.0
+- id: openai/gpt-4o:extended
+  name: 'OpenAI: GPT-4o (extended)'
+  price_in: 6.0
+  price_out: 18.0
+- id: anthropic/claude-opus-4.5
+  name: 'Anthropic: Claude Opus 4.5'
+  price_in: 5.0
+  price_out: 25.0
+- id: anthropic/claude-3.5-sonnet
+  name: 'Anthropic: Claude 3.5 Sonnet'
+  price_in: 6.0
+  price_out: 30.0
+- id: openai/gpt-4-turbo
+  name: 'OpenAI: GPT-4 Turbo'
+  price_in: 10.0
+  price_out: 30.0
+- id: openai/gpt-4-turbo-preview
+  name: 'OpenAI: GPT-4 Turbo Preview'
+  price_in: 10.0
+  price_out: 30.0
+- id: openai/gpt-4-1106-preview
+  name: 'OpenAI: GPT-4 Turbo (older v1106)'
+  price_in: 10.0
+  price_out: 30.0
+- id: openai/o3-deep-research
+  name: 'OpenAI: o3 Deep Research'
+  price_in: 10.0
+  price_out: 40.0
+- id: openai/o1
+  name: 'OpenAI: o1'
+  price_in: 15.0
+  price_out: 60.0
+- id: openai/gpt-4
+  name: 'OpenAI: GPT-4'
+  price_in: 30.0
+  price_out: 60.0
+- id: openai/gpt-4-0314
+  name: 'OpenAI: GPT-4 (older v0314)'
+  price_in: 30.0
+  price_out: 60.0
+- id: anthropic/claude-opus-4.1
+  name: 'Anthropic: Claude Opus 4.1'
+  price_in: 15.0
+  price_out: 75.0
+- id: anthropic/claude-opus-4
+  name: 'Anthropic: Claude Opus 4'
+  price_in: 15.0
+  price_out: 75.0
+- id: anthropic/claude-3-opus
+  name: 'Anthropic: Claude 3 Opus'
+  price_in: 15.0
+  price_out: 75.0
+- id: openai/o3-pro
+  name: 'OpenAI: o3 Pro'
+  price_in: 20.0
+  price_out: 80.0
+- id: openai/gpt-5-pro
+  name: 'OpenAI: GPT-5 Pro'
+  price_in: 15.0
+  price_out: 120.0
+- id: openai/o1-pro
+  name: 'OpenAI: o1-pro'
+  price_in: 150.0
+  price_out: 600.0

@@ -1,0 +1,7 @@
+{
+  "name": "Пчела",
+  "original_room": "12-Театр",
+  "language": "Lua",
+  "description": "Division by zero в Lua",
+  "emoji": "🐛"
+}

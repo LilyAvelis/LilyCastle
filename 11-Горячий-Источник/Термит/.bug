@@ -1,0 +1,7 @@
+{
+  "name": "Термит",
+  "original_room": "11-Горячий-Источник",
+  "language": "Perl",
+  "description": "Runtime error в Perl",
+  "emoji": "🐛"
+}

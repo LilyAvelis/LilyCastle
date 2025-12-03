@@ -1,0 +1,8 @@
+﻿garden:
+  taxonomy:
+    - Bloom # Инициализация
+    - Oak # Бизнес-логика
+    - Vine # Внешние HTTP-вызовы (OpenRouter)
+    - Ivy # MCP-протокол (tools, handlers)
+    - Fern # Утилиты
+    - Rose # Форматирование вывода

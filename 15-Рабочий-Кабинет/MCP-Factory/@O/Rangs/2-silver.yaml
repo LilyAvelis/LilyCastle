@@ -1,0 +1,428 @@
+# MCP-Factory Model Rankings - Silver
+# Средние модели ($0.2-1.0/1M токенов) | Сортировка: по цене выхода токенов
+
+models:
+- id: aion-labs/aion-rp-llama-3.1-8b
+  name: 'AionLabs: Aion-RP 1.0 (8B)'
+  price_in: 0.2
+  price_out: 0.2
+- id: qwen/qwen-2.5-vl-7b-instruct
+  name: 'Qwen: Qwen2.5-VL 7B Instruct'
+  price_in: 0.2
+  price_out: 0.2
+- id: mistralai/mistral-7b-instruct-v0.3
+  name: 'Mistral: Mistral 7B Instruct v0.3'
+  price_in: 0.2
+  price_out: 0.2
+- id: meta-llama/llama-guard-2-8b
+  name: 'Meta: LlamaGuard 2 8B'
+  price_in: 0.2
+  price_out: 0.2
+- id: mistralai/mistral-7b-instruct-v0.2
+  name: 'Mistral: Mistral 7B Instruct v0.2'
+  price_in: 0.2
+  price_out: 0.2
+- id: deepseek/deepseek-r1-distill-qwen-32b
+  name: 'DeepSeek: R1 Distill Qwen 32B'
+  price_in: 0.24
+  price_out: 0.24
+- id: mistralai/mistral-tiny
+  name: Mistral Tiny
+  price_in: 0.25
+  price_out: 0.25
+- id: nousresearch/hermes-3-llama-3.1-70b
+  name: 'Nous: Hermes 3 70B Instruct'
+  price_in: 0.3
+  price_out: 0.3
+- id: deepseek/deepseek-v3.2-exp
+  name: 'DeepSeek: DeepSeek V3.2 Exp'
+  price_in: 0.21
+  price_out: 0.32
+- id: deepseek/deepseek-v3.2-speciale
+  name: 'DeepSeek: DeepSeek V3.2 Speciale'
+  price_in: 0.28
+  price_out: 0.4
+- id: deepseek/deepseek-v3.2
+  name: 'DeepSeek: DeepSeek V3.2'
+  price_in: 0.28
+  price_out: 0.4
+- id: google/gemini-2.5-flash-preview-09-2025
+  name: 'Google: Gemini 2.5 Flash Preview 09-2025'
+  price_in: 0.3
+  price_out: 0.4
+- id: ai21/jamba-mini-1.7
+  name: 'AI21: Jamba Mini 1.7'
+  price_in: 0.2
+  price_out: 0.4
+- id: thedrummer/unslopnemo-12b
+  name: 'TheDrummer: UnslopNemo 12B'
+  price_in: 0.4
+  price_out: 0.4
+- id: meta-llama/llama-3.2-90b-vision-instruct
+  name: 'Meta: Llama 3.2 90B Vision Instruct'
+  price_in: 0.35
+  price_out: 0.4
+- id: meta-llama/llama-3.1-70b-instruct
+  name: 'Meta: Llama 3.1 70B Instruct'
+  price_in: 0.4
+  price_out: 0.4
+- id: meta-llama/llama-3-70b-instruct
+  name: 'Meta: Llama 3 70B Instruct'
+  price_in: 0.3
+  price_out: 0.4
+- id: microsoft/wizardlm-2-8x22b
+  name: WizardLM-2 8x22B
+  price_in: 0.48
+  price_out: 0.48
+- id: thedrummer/cydonia-24b-v4.1
+  name: 'TheDrummer: Cydonia 24B V4.1'
+  price_in: 0.3
+  price_out: 0.5
+- id: x-ai/grok-4-fast
+  name: 'xAI: Grok 4 Fast'
+  price_in: 0.2
+  price_out: 0.5
+- id: x-ai/grok-3-mini
+  name: 'xAI: Grok 3 Mini'
+  price_in: 0.3
+  price_out: 0.5
+- id: x-ai/grok-3-mini-beta
+  name: 'xAI: Grok 3 Mini Beta'
+  price_in: 0.3
+  price_out: 0.5
+- id: mistralai/mixtral-8x7b-instruct
+  name: 'Mistral: Mixtral 8x7B Instruct'
+  price_in: 0.54
+  price_out: 0.54
+- id: moonshotai/kimi-linear-48b-a3b-instruct
+  name: 'MoonshotAI: Kimi Linear 48B A3B Instruct'
+  price_in: 0.5
+  price_out: 0.6
+- id: nvidia/nemotron-nano-12b-v2-vl
+  name: 'NVIDIA: Nemotron Nano 12B 2 VL'
+  price_in: 0.2
+  price_out: 0.6
+- id: mistralai/mistral-saba
+  name: 'Mistral: Saba'
+  price_in: 0.2
+  price_out: 0.6
+- id: mistralai/mistral-small
+  name: Mistral Small
+  price_in: 0.2
+  price_out: 0.6
+- id: qwen/qwen-vl-plus
+  name: 'Qwen: Qwen VL Plus'
+  price_in: 0.21
+  price_out: 0.63
+- id: google/gemma-2-27b-it
+  name: 'Google: Gemma 2 27B'
+  price_in: 0.65
+  price_out: 0.65
+- id: undi95/remm-slerp-l2-13b
+  name: ReMM SLERP 13B
+  price_in: 0.45
+  price_out: 0.65
+- id: sao10k/l3.3-euryale-70b
+  name: 'Sao10K: Llama 3.3 Euryale 70B'
+  price_in: 0.65
+  price_out: 0.75
+- id: sao10k/l3.1-euryale-70b
+  name: 'Sao10K: Llama 3.1 Euryale 70B v2.2'
+  price_in: 0.65
+  price_out: 0.75
+- id: deepseek/deepseek-v3.1-terminus
+  name: 'DeepSeek: DeepSeek V3.1 Terminus'
+  price_in: 0.21
+  price_out: 0.79
+- id: deepseek/deepseek-v3.1-terminus:exacto
+  name: 'DeepSeek: DeepSeek V3.1 Terminus (exacto)'
+  price_in: 0.216
+  price_out: 0.8
+- id: deepseek/deepseek-chat-v3.1
+  name: 'DeepSeek: DeepSeek V3.1'
+  price_in: 0.2
+  price_out: 0.8
+- id: arcee-ai/coder-large
+  name: 'Arcee AI: Coder Large'
+  price_in: 0.5
+  price_out: 0.8
+- id: thedrummer/skyfall-36b-v2
+  name: 'TheDrummer: Skyfall 36B V2'
+  price_in: 0.5
+  price_out: 0.8
+- id: deepcogito/cogito-v2-preview-llama-70b
+  name: 'Deep Cogito: Cogito V2 Preview Llama 70B'
+  price_in: 0.88
+  price_out: 0.88
+- id: baidu/ernie-4.5-300b-a47b
+  name: 'Baidu: ERNIE 4.5 300B A47B '
+  price_in: 0.224
+  price_out: 0.88
+- id: deepseek/deepseek-chat-v3-0324
+  name: 'DeepSeek: DeepSeek V3 0324'
+  price_in: 0.2
+  price_out: 0.88
+- id: mistralai/codestral-2508
+  name: 'Mistral: Codestral 2508'
+  price_in: 0.3
+  price_out: 0.9
+- id: mistralai/codestral-2501
+  name: 'Mistral: Codestral 2501'
+  price_in: 0.3
+  price_out: 0.9
+- id: qwen/qwen3-coder
+  name: 'Qwen: Qwen3 Coder 480B A35B'
+  price_in: 0.22
+  price_out: 0.95
+- id: baidu/ernie-4.5-vl-424b-a47b
+  name: 'Baidu: ERNIE 4.5 VL 424B A47B '
+  price_in: 0.336
+  price_out: 1.0
+- id: thedrummer/anubis-70b-v1.1
+  name: 'TheDrummer: Anubis 70B V1.1'
+  price_in: 0.75
+  price_out: 1.0
+- id: inception/mercury
+  name: 'Inception: Mercury'
+  price_in: 0.25
+  price_out: 1.0
+- id: inception/mercury-coder
+  name: 'Inception: Mercury Coder'
+  price_in: 0.25
+  price_out: 1.0
+- id: minimax/minimax-m2
+  name: 'MiniMax: MiniMax M2'
+  price_in: 0.255
+  price_out: 1.02
+- id: prime-intellect/intellect-3
+  name: 'Prime Intellect: INTELLECT-3'
+  price_in: 0.2
+  price_out: 1.1
+- id: minimax/minimax-01
+  name: 'MiniMax: MiniMax-01'
+  price_in: 0.2
+  price_out: 1.1
+- id: minimax/minimax-01
+  name: 'MiniMax: MiniMax-01'
+  price_in: 0.2
+  price_out: 1.1
+- id: moonshotai/kimi-dev-72b
+  name: 'MoonshotAI: Kimi Dev 72B'
+  price_in: 0.29
+  price_out: 1.15
+- id: tngtech/tng-r1t-chimera
+  name: 'TNG: R1T Chimera'
+  price_in: 0.3
+  price_out: 1.2
+- id: qwen/qwen3-vl-235b-a22b-thinking
+  name: 'Qwen: Qwen3 VL 235B A22B Thinking'
+  price_in: 0.3
+  price_out: 1.2
+- id: qwen/qwen-plus-2025-07-28
+  name: 'Qwen: Qwen Plus 0728'
+  price_in: 0.4
+  price_out: 1.2
+- id: nousresearch/hermes-4-405b
+  name: 'Nous: Hermes 4 405B'
+  price_in: 0.3
+  price_out: 1.2
+- id: tngtech/deepseek-r1t2-chimera
+  name: 'TNG: DeepSeek R1T2 Chimera'
+  price_in: 0.3
+  price_out: 1.2
+- id: morph/morph-v3-fast
+  name: 'Morph: Morph V3 Fast'
+  price_in: 0.8
+  price_out: 1.2
+- id: arcee-ai/virtuoso-large
+  name: 'Arcee AI: Virtuoso Large'
+  price_in: 0.75
+  price_out: 1.2
+- id: tngtech/deepseek-r1t-chimera
+  name: 'TNG: DeepSeek R1T Chimera'
+  price_in: 0.3
+  price_out: 1.2
+- id: microsoft/mai-ds-r1
+  name: 'Microsoft: MAI DS R1'
+  price_in: 0.3
+  price_out: 1.2
+- id: eleutherai/llemma_7b
+  name: 'EleutherAI: Llemma 7b'
+  price_in: 0.8
+  price_out: 1.2
+- id: alfredpros/codellama-7b-instruct-solidity
+  name: 'AlfredPros: CodeLLaMa 7B Instruct Solidity'
+  price_in: 0.8
+  price_out: 1.2
+- id: qwen/qwen-plus
+  name: 'Qwen: Qwen-Plus'
+  price_in: 0.4
+  price_out: 1.2
+- id: deepseek/deepseek-r1
+  name: 'DeepSeek: R1'
+  price_in: 0.3
+  price_out: 1.2
+- id: deepseek/deepseek-chat
+  name: 'DeepSeek: DeepSeek V3'
+  price_in: 0.3
+  price_out: 1.2
+- id: relace/relace-apply-3
+  name: 'Relace: Relace Apply 3'
+  price_in: 0.85
+  price_out: 1.25
+- id: anthropic/claude-3-haiku
+  name: 'Anthropic: Claude 3 Haiku'
+  price_in: 0.25
+  price_out: 1.25
+- id: aion-labs/aion-1.0-mini
+  name: 'AionLabs: Aion-1.0-Mini'
+  price_in: 0.7
+  price_out: 1.4
+- id: stepfun-ai/step3
+  name: 'StepFun: Step3'
+  price_in: 0.57
+  price_out: 1.42
+- id: z-ai/glm-4.5v
+  name: 'Z.AI: GLM 4.5V'
+  price_in: 0.48
+  price_out: 1.44
+- id: mistralai/mistral-large-2512
+  name: 'Mistral: Mistral Large 3 2512'
+  price_in: 0.5
+  price_out: 1.5
+- id: qwen/qwen3-coder-flash
+  name: 'Qwen: Qwen3 Coder Flash'
+  price_in: 0.3
+  price_out: 1.5
+- id: x-ai/grok-code-fast-1
+  name: 'xAI: Grok Code Fast 1'
+  price_in: 0.2
+  price_out: 1.5
+- id: mistralai/magistral-small-2506
+  name: 'Mistral: Magistral Small 2506'
+  price_in: 0.5
+  price_out: 1.5
+- id: openai/gpt-3.5-turbo
+  name: 'OpenAI: GPT-3.5 Turbo'
+  price_in: 0.5
+  price_out: 1.5
+- id: qwen/qwen3-coder:exacto
+  name: 'Qwen: Qwen3 Coder 480B A35B (exacto)'
+  price_in: 0.38
+  price_out: 1.53
+- id: z-ai/glm-4.5
+  name: 'Z.AI: GLM 4.5'
+  price_in: 0.35
+  price_out: 1.55
+- id: openai/gpt-4.1-mini
+  name: 'OpenAI: GPT-4.1 Mini'
+  price_in: 0.4
+  price_out: 1.6
+- id: z-ai/glm-4.6
+  name: 'Z.AI: GLM 4.6'
+  price_in: 0.4
+  price_out: 1.75
+- id: z-ai/glm-4.6:exacto
+  name: 'Z.AI: GLM 4.6 (exacto)'
+  price_in: 0.44
+  price_out: 1.76
+- id: nvidia/llama-3.1-nemotron-ultra-253b-v1
+  name: 'NVIDIA: Llama 3.1 Nemotron Ultra 253B v1'
+  price_in: 0.6
+  price_out: 1.8
+- id: moonshotai/kimi-k2
+  name: 'MoonshotAI: Kimi K2 0711'
+  price_in: 0.456
+  price_out: 1.84
+- id: qwen/qwen3-vl-235b-a22b-instruct
+  name: 'Qwen: Qwen3 VL 235B A22B Instruct'
+  price_in: 0.21
+  price_out: 1.9
+- id: moonshotai/kimi-k2-0905
+  name: 'MoonshotAI: Kimi K2 0905'
+  price_in: 0.39
+  price_out: 1.9
+- id: morph/morph-v3-large
+  name: 'Morph: Morph V3 Large'
+  price_in: 0.9
+  price_out: 1.9
+- id: openai/gpt-5.1-codex-mini
+  name: 'OpenAI: GPT-5.1-Codex-Mini'
+  price_in: 0.25
+  price_out: 2.0
+- id: mistralai/mistral-medium-3.1
+  name: 'Mistral: Mistral Medium 3.1'
+  price_in: 0.4
+  price_out: 2.0
+- id: openai/gpt-5-mini
+  name: 'OpenAI: GPT-5 Mini'
+  price_in: 0.25
+  price_out: 2.0
+- id: mistralai/devstral-medium
+  name: 'Mistral: Devstral Medium'
+  price_in: 0.4
+  price_out: 2.0
+- id: mistralai/mistral-medium-3
+  name: 'Mistral: Mistral Medium 3'
+  price_in: 0.4
+  price_out: 2.0
+- id: deepseek/deepseek-prover-v2
+  name: 'DeepSeek: DeepSeek Prover V2'
+  price_in: 0.5
+  price_out: 2.18
+- id: moonshotai/kimi-k2-thinking
+  name: 'MoonshotAI: Kimi K2 Thinking'
+  price_in: 0.45
+  price_out: 2.35
+- id: amazon/nova-2-lite-v1
+  name: 'Amazon: Nova 2 Lite'
+  price_in: 0.3
+  price_out: 2.5
+- id: google/gemini-2.5-flash-image
+  name: 'Google: Gemini 2.5 Flash Image (Nano Banana)'
+  price_in: 0.3
+  price_out: 2.5
+- id: moonshotai/kimi-k2-0905:exacto
+  name: 'MoonshotAI: Kimi K2 0905 (exacto)'
+  price_in: 0.6
+  price_out: 2.5
+- id: google/gemini-2.5-flash-image-preview
+  name: 'Google: Gemini 2.5 Flash Image Preview (Nano Banana)'
+  price_in: 0.3
+  price_out: 2.5
+- id: google/gemini-2.5-flash
+  name: 'Google: Gemini 2.5 Flash'
+  price_in: 0.3
+  price_out: 2.5
+- id: qwen/qwen-vl-max
+  name: 'Qwen: Qwen VL Max'
+  price_in: 0.8
+  price_out: 3.2
+- id: amazon/nova-pro-v1
+  name: 'Amazon: Nova Pro 1.0'
+  price_in: 0.8
+  price_out: 3.2
+- id: arcee-ai/maestro-reasoning
+  name: 'Arcee AI: Maestro Reasoning'
+  price_in: 0.9
+  price_out: 3.3
+- id: switchpoint/router
+  name: Switchpoint Router
+  price_in: 0.85
+  price_out: 3.4
+- id: qwen/qwen-plus-2025-07-28:thinking
+  name: 'Qwen: Qwen Plus 0728 (thinking)'
+  price_in: 0.4
+  price_out: 4.0
+- id: anthropic/claude-3.5-haiku-20241022
+  name: 'Anthropic: Claude 3.5 Haiku (2024-10-22)'
+  price_in: 0.8
+  price_out: 4.0
+- id: anthropic/claude-3.5-haiku
+  name: 'Anthropic: Claude 3.5 Haiku'
+  price_in: 0.8
+  price_out: 4.0
+- id: deepseek/deepseek-r1-0528
+  name: 'DeepSeek: R1 0528'
+  price_in: 0.2
+  price_out: 4.5

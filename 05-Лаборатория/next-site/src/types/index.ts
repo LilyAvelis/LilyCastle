@@ -3,6 +3,7 @@ export interface Category {
   name: string;
   description: string;
   emoji: string;
+  imageUrl?: string; // Обложка категории (опционально, если нет — показываем emoji)
   order: number;
   createdAt?: Date;
 }

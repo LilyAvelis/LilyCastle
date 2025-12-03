@@ -1,0 +1,7 @@
+{
+  "name": "БожьяКоровка",
+  "original_room": "12-Театр",
+  "language": "Go",
+  "description": "Assertion error в Go",
+  "emoji": "🐛"
+}
