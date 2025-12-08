@@ -36,6 +36,14 @@ This isn't just bugs. This is systemic. Every tool fights you:
 
 The code is solid. The logic is sound. But the ecosystem? It's a goddamn conspiracy. Frameworks assume perfect environments, clouds assume perfect apps, editors assume perfect users.
 
+## The Font Rendering Apocalypse
+
+And just when you think it can't get worse... oh wait, it can. After ditching the runme cell (because fuck notebooks), the MD files start glitching out. Letters tear apart like a bad vsync in a game – not on the whole screen, but in specific spots that move with the document position. It's not the monitor, it's not dead pixels. It's the fucking font rendering engine in VS Code.
+
+Why? Because on a 4K display, if the font size is too small, the ancient GDI rendering (yeah, from the stone age) breaks down. Letters corrupt, pixels misalign. But the Markdown preview renderer? Works perfectly. Because it's modern. The code editor? Uses legacy shit that can't handle high DPI.
+
+Fix? Bump the font size or zoom level. But seriously? In 2025, VS Code still has font rendering bugs on 4K? This isn't a bug, it's archaeological evidence that the codebase is older than the pyramids.
+
 ## Why This Matters
 
 Because this is real development. Not tutorials with perfect setups. Real projects hit these walls. And when they do, you don't just fix code – you fight the platform. You debug not your logic, but the invisible assumptions baked into every tool.
