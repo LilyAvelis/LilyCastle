@@ -1,0 +1,26 @@
+{
+  "name": "mcp-factory",
+  "version": "2.0.0",
+  "description": "MCP Server: Mini-MoE & CRM for cheap LLM generation via OpenRouter",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json && cpx \"tools/**/.bug\" \"dist/tools\" && cpx \"tools/**/*.js\" \"dist/tools\" && cpx \"Nevada/**\" \"dist/Nevada\"",
+    "patch-ui": "node dist/patch-manager/web-ui.js",
+    "start": "node dist/index.js",
+    "dev": "tsc -p tsconfig.json && cpx \"tools/**/.bug\" \"dist/tools\" && cpx \"Nevada/**\" \"dist/Nevada\" && cross-env DEMO_RUN=1 node dist/index.js"
+  },
+  "dependencies": {
+    "@lily-castle/patch-manager": "file:../../Тронный-зал/patch-manager",
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "mongodb": "^6.21.0",
+    "sql.js": "^1.13.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/sql.js": "^1.4.9",
+    "cpx": "^1.5.0",
+    "cross-env": "^10.1.0",
+    "typescript": "^5.3.0"
+  }
+}

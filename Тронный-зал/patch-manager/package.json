@@ -1,0 +1,22 @@
+{
+  "name": "patch-manager",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Patch Manager - Управление патчами через CLI и Web API",
+  "main": "server/index.ts",
+  "scripts": {
+    "dev": "node server/index.ts",
+    "start": "node server/index.ts",
+    "cli": "node cli/list-patches.mjs",
+    "migrate": "node migrate-to-atlas.mjs"
+  },
+  "dependencies": {
+    "chalk": "^5.6.2",
+    "cli-table3": "^0.6.5",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "inquirer": "^9.3.8",
+    "mongodb": "^7.0.0"
+  }
+}

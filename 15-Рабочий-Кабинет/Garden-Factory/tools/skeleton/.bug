@@ -1,0 +1,20 @@
+{
+  "name": "skeleton",
+  "description": "Parse file structure (classes, functions, methods, headers). Works with TypeScript, Python, Markdown, JSON",
+  "functions": [
+    {
+      "name": "skeleton",
+      "description": "Extract structure from a file: classes, functions, methods, interfaces, headers. Auto-detects file type by extension. Supports: .ts, .tsx, .py, .md, .json",
+      "params": [
+        {
+          "name": "filePath",
+          "type": "string",
+          "required": true,
+          "description": "Absolute path to the file to parse"
+        }
+      ]
+    }
+  ],
+  "module": "./tool.js",
+  "dependencies": []
+}

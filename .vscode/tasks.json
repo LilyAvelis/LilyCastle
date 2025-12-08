@@ -39,6 +39,54 @@
                 "focus": false,
                 "panel": "shared"
             }
+        },
+        {
+            "label": "Lily-Mango Menu",
+            "type": "shell",
+            "command": "cd 'C:\\Users\\Public\\LilyCastle\\Тронный-зал\\patch-manager'; node cli/lily-mango.mjs",
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "View Mango Revolution Patch",
+            "type": "shell",
+            "command": "cd 'C:\\Users\\Public\\LilyCastle\\Тронный-зал\\patch-manager'; node cli/view-patch.mjs 6935854f77f410f19ad0731a --browser",
+            "group": "build"
+        },
+        {
+            "label": "View Circus Patch",
+            "type": "shell",
+            "command": "cd 'C:\\Users\\Public\\LilyCastle\\Тронный-зал\\patch-manager'; node cli/view-patch.mjs 6935796c2234090900b4f5af --browser",
+            "group": "build"
+        },
+        {
+            "label": "List All Patches",
+            "type": "shell",
+            "command": "cd 'C:\\Users\\Public\\LilyCastle\\Тронный-зал\\patch-manager'; node cli/list-patches.mjs",
+            "group": "build"
+        },
+        {
+            "label": "Search Patches by Tag Circus",
+            "type": "shell",
+            "command": "cd 'C:\\Users\\Public\\LilyCastle\\Тронный-зал\\patch-manager'; node cli/search-patches.mjs --tag circus",
+            "group": "build"
+        },
+        {
+            "label": "Open MongoDB Shell",
+            "type": "shell",
+            "command": "mongosh mongodb://localhost:27017/garden-patches",
+            "group": "build"
+        },
+        {
+            "label": "Count Patches",
+            "type": "shell",
+            "command": "cd 'C:\\Users\\Public\\LilyCastle\\Тронный-зал\\patch-manager'; mongosh mongodb://localhost:27017/garden-patches --eval 'db.patches.countDocuments()'",
+            "group": "build"
         }
     ]
 }
