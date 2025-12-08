@@ -13,7 +13,7 @@
 
 import express from 'express';
 import cors from 'cors';
-import { MongoClient } from 'mongodb';
+import { MongoClient, ObjectId } from 'mongodb';
 import * as dotenv from 'dotenv';
 
 // ============================================================================
@@ -96,7 +96,6 @@ app.get('/api/patches/:id', async (req, res) => {
     
     // Если не нашли, пытаемся по _id (MongoDB ObjectId)
     if (!patch) {
-      const { ObjectId } = await import('mongodb');
       try {
         patch = await db.collection('patches').findOne({ _id: new ObjectId(id) });
       } catch (e) {
@@ -180,6 +179,10 @@ app.use((err, req, res, next) => {
 async function start() {
   try {
     console.log('🔌 Подключаюсь к MongoDB Atlas...');
+    console.log('MONGO_URI:', MONGO_URI ? 'SET' : 'NOT SET');
+    console.log('MONGO_DB:', MONGO_DB);
+    console.log('PORT:', PORT);
+    
     client = new MongoClient(MONGO_URI);
     await client.connect();
     db = client.db(MONGO_DB);
