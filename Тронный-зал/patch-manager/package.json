@@ -1,12 +1,11 @@
 {
   "name": "patch-manager",
   "version": "1.0.0",
-  "type": "module",
   "description": "Patch Manager - Управление патчами через CLI и Web API",
-  "main": "server/index.ts",
+  "main": "server.js",
   "scripts": {
-    "dev": "node server.mjs",
-    "start": "node server.mjs",
+    "dev": "node server.js",
+    "start": "node server.js",
     "cli": "node cli/list-patches.mjs",
     "migrate": "node migrate-to-atlas.mjs"
   },

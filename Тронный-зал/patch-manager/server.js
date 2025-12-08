@@ -11,10 +11,10 @@
  * - GET /health               - проверка здоровья сервера
  */
 
-import express from 'express';
-import cors from 'cors';
-import { MongoClient, ObjectId } from 'mongodb';
-import * as dotenv from 'dotenv';
+const express = require('express');
+const cors = require('cors');
+const { MongoClient, ObjectId } = require('mongodb');
+const dotenv = require('dotenv');
 
 // ============================================================================
 // КОНФИГ
