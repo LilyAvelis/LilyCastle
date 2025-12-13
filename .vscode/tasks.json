@@ -9,7 +9,7 @@
                 "-ExecutionPolicy",
                 "Bypass",
                 "-File",
-                "${workspaceFolder}/Тронный-зал/auto_push.ps1"
+                "${workspaceFolder}/@Тронный-зал/auto_push.ps1"
             ],
             "group": {
                 "kind": "build",
@@ -43,7 +43,7 @@
         {
             "label": "Lily-Mango Menu",
             "type": "shell",
-            "command": "cd 'C:\\Users\\Public\\LilyCastle\\Тронный-зал\\patch-manager'; node cli/lily-mango.mjs",
+            "command": "cd 'C:\\Users\\Public\\LilyCastle\\1-Рабочий-Кабинет\\patch-manager'; node cli/lily-mango.mjs",
             "group": "build",
             "presentation": {
                 "echo": true,
@@ -55,25 +55,25 @@
         {
             "label": "View Mango Revolution Patch",
             "type": "shell",
-            "command": "cd 'C:\\Users\\Public\\LilyCastle\\Тронный-зал\\patch-manager'; node cli/view-patch.mjs 6935854f77f410f19ad0731a --browser",
+            "command": "cd 'C:\\Users\\Public\\LilyCastle\\1-Рабочий-Кабинет\\patch-manager'; node cli/view-patch.mjs 6935854f77f410f19ad0731a --browser",
             "group": "build"
         },
         {
             "label": "View Circus Patch",
             "type": "shell",
-            "command": "cd 'C:\\Users\\Public\\LilyCastle\\Тронный-зал\\patch-manager'; node cli/view-patch.mjs 6935796c2234090900b4f5af --browser",
+            "command": "cd 'C:\\Users\\Public\\LilyCastle\\1-Рабочий-Кабинет\\patch-manager'; node cli/view-patch.mjs 6935796c2234090900b4f5af --browser",
             "group": "build"
         },
         {
             "label": "List All Patches",
             "type": "shell",
-            "command": "cd 'C:\\Users\\Public\\LilyCastle\\Тронный-зал\\patch-manager'; node cli/list-patches.mjs",
+            "command": "cd 'C:\\Users\\Public\\LilyCastle\\1-Рабочий-Кабинет\\patch-manager'; node cli/list-patches.mjs",
             "group": "build"
         },
         {
             "label": "Search Patches by Tag Circus",
             "type": "shell",
-            "command": "cd 'C:\\Users\\Public\\LilyCastle\\Тронный-зал\\patch-manager'; node cli/search-patches.mjs --tag circus",
+            "command": "cd 'C:\\Users\\Public\\LilyCastle\\1-Рабочий-Кабинет\\patch-manager'; node cli/search-patches.mjs --tag circus",
             "group": "build"
         },
         {
@@ -85,8 +85,230 @@
         {
             "label": "Count Patches",
             "type": "shell",
-            "command": "cd 'C:\\Users\\Public\\LilyCastle\\Тронный-зал\\patch-manager'; mongosh mongodb://localhost:27017/garden-patches --eval 'db.patches.countDocuments()'",
+            "command": "cd 'C:\\Users\\Public\\LilyCastle\\1-Рабочий-Кабинет\\patch-manager'; mongosh mongodb://localhost:27017/garden-patches --eval 'db.patches.countDocuments()'",
             "group": "build"
+        },
+        {
+            "label": "Mulathara: Setup (Windows)",
+            "type": "shell",
+            "command": "powershell.exe",
+            "options": {
+                "cwd": "${workspaceFolder}\\3-Спальня\\1-Mulathara"
+            },
+            "args": [
+                "-ExecutionPolicy",
+                "Bypass",
+                "-File",
+                ".\\scripts\\setup_windows.ps1"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Mulathara: Run Backend",
+            "type": "shell",
+            "command": "powershell.exe",
+            "options": {
+                "cwd": "${workspaceFolder}\\3-Спальня\\1-Mulathara"
+            },
+            "args": [
+                "-ExecutionPolicy",
+                "Bypass",
+                "-File",
+                ".\\scripts\\run_backend.ps1"
+            ],
+            "isBackground": true,
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Mulathara: Open in Browser",
+            "type": "shell",
+            "command": "cmd",
+            "args": [
+                "/c",
+                "start",
+                "http://127.0.0.1:8000/"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Mulathara: Open Warehouse (BASE_DIR)",
+            "type": "shell",
+            "command": "powershell.exe",
+            "options": {
+                "cwd": "${workspaceFolder}\\3-Спальня\\1-Mulathara"
+            },
+            "args": [
+                "-ExecutionPolicy",
+                "Bypass",
+                "-NoProfile",
+                "-Command",
+                "$ErrorActionPreference='Stop'; $root=Resolve-Path '.'; $envPath=Join-Path $root '.env'; if (Test-Path $envPath) { Get-Content $envPath | ForEach-Object { if ($_ -match '^(\\s*#|\\s*$)') { return }; $p=$_.Split('=',2); if ($p.Length -eq 2) { $n=$p[0].Trim(); $v=$p[1].Trim().Trim([char]34); [System.Environment]::SetEnvironmentVariable($n,$v) } } }; $base=$env:BASE_DIR; if (-not $base -or $base.Trim() -eq '') { $base=Join-Path $root 'Milena-Food' } elseif (-not [System.IO.Path]::IsPathRooted($base)) { $base=(Join-Path $root $base) }; $base=[System.IO.Path]::GetFullPath($base); New-Item -ItemType Directory -Force -Path $base | Out-Null; Start-Process explorer.exe $base"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Sushi Next: Setup (Windows)",
+            "type": "shell",
+            "command": "powershell.exe",
+            "options": {
+                "cwd": "${workspaceFolder}\\2-Аквариум\\Sushi-Next\\body"
+            },
+            "args": [
+                "-ExecutionPolicy",
+                "Bypass",
+                "-File",
+                ".\\scripts\\setup_windows.ps1"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Sushi Next: Dev Server",
+            "type": "shell",
+            "command": "powershell.exe",
+            "options": {
+                "cwd": "${workspaceFolder}\\2-Аквариум\\Sushi-Next\\body"
+            },
+            "args": [
+                "-ExecutionPolicy",
+                "Bypass",
+                "-File",
+                ".\\scripts\\run_dev.ps1"
+            ],
+            "isBackground": true,
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Sushi Next: Open in Browser",
+            "type": "shell",
+            "command": "cmd",
+            "args": [
+                "/c",
+                "start",
+                "http://127.0.0.1:3000/"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Sushi Next: Vercel Login",
+            "type": "shell",
+            "command": "powershell.exe",
+            "options": {
+                "cwd": "${workspaceFolder}\\2-Аквариум\\Sushi-Next\\body"
+            },
+            "args": [
+                "-ExecutionPolicy",
+                "Bypass",
+                "-NoProfile",
+                "-Command",
+                "npm run vercel:login"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Sushi Next: Vercel Link",
+            "type": "shell",
+            "command": "powershell.exe",
+            "options": {
+                "cwd": "${workspaceFolder}\\2-Аквариум\\Sushi-Next\\body"
+            },
+            "args": [
+                "-ExecutionPolicy",
+                "Bypass",
+                "-NoProfile",
+                "-Command",
+                "npm run vercel:link"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Sushi Next: Vercel Deploy (Preview)",
+            "type": "shell",
+            "command": "powershell.exe",
+            "options": {
+                "cwd": "${workspaceFolder}\\2-Аквариум\\Sushi-Next\\body"
+            },
+            "args": [
+                "-ExecutionPolicy",
+                "Bypass",
+                "-NoProfile",
+                "-Command",
+                "npm run vercel:deploy"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Sushi Next: Vercel Deploy (Production)",
+            "type": "shell",
+            "command": "powershell.exe",
+            "options": {
+                "cwd": "${workspaceFolder}\\2-Аквариум\\Sushi-Next\\body"
+            },
+            "args": [
+                "-ExecutionPolicy",
+                "Bypass",
+                "-NoProfile",
+                "-Command",
+                "npm run vercel:deploy:prod"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Sushi Next: Set DATABASE_URL (local)",
+            "type": "shell",
+            "command": "powershell.exe",
+            "options": {
+                "cwd": "${workspaceFolder}\\2-Аквариум\\Sushi-Next\\body"
+            },
+            "args": [
+                "-ExecutionPolicy",
+                "Bypass",
+                "-File",
+                ".\\scripts\\set_database_url.ps1"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Sushi Next: DB Push (create tables)",
+            "type": "shell",
+            "command": "powershell.exe",
+            "options": {
+                "cwd": "${workspaceFolder}\\2-Аквариум\\Sushi-Next\\body"
+            },
+            "args": [
+                "-ExecutionPolicy",
+                "Bypass",
+                "-NoProfile",
+                "-Command",
+                "npm run db:push"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Sushi Next: Vercel Sync DATABASE_URL",
+            "type": "shell",
+            "command": "powershell.exe",
+            "options": {
+                "cwd": "${workspaceFolder}\\2-Аквариум\\Sushi-Next\\body"
+            },
+            "args": [
+                "-ExecutionPolicy",
+                "Bypass",
+                "-File",
+                ".\\scripts\\vercel_sync_database_url.ps1"
+            ],
+            "group": "build",
+            "problemMatcher": []
         }
     ]
 }
